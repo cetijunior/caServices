@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/* Define Black Theme Colors */
+:root {
+  --bg-dark: #000000;
+  /* Deep Black */
+  --bg-gradient-dark: #0a0a0a;
+  /* Darker Black */
+  --text-primary: #ffffff;
+  /* Pure White */
+  --text-secondary: #c4c4c4;
+  /* Light Gray */
+  --text-accent: #4ea8de;
+  /* Blue Accent */
+  --btn-primary: #1e40af;
+  /* Dark Blue */
+  --btn-hover: #2563eb;
+  /* Brighter Blue */
+  --border-light: #3b3b3b;
+  /* Gray Border */
+}
+
+/* Apply Global Styles */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+}
+
+/* Customize Scrollbar for Dark Theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
