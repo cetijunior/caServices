@@ -1,38 +1,51 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Globe, Database, Code, ArrowRight } from "lucide-react";
+import {
+    Code,
+    Globe,
+    Database,
+    ArrowRight,
+    Coffee,
+    Cpu,
+    CodeSquare,
+    Smartphone,
+    Server,
+    Cloud,
+    Terminal,
+    Box,
+    Globe2,
+    Apple,
+} from "lucide-react";
 
 const services = [
     {
         title: "Software Development",
-        icon: <Code className="w-8 h-8" />,
+        icon: <Code className="w-8 h-8 text-blue-400" />,
         description: "Custom software solutions tailored to your business needs with cutting-edge technology."
     },
     {
         title: "Software Upgrade Services",
-        icon: <Globe className="w-8 h-8" />,
-        description: "Step confidently into the future with Nebula's cutting-edge software upgrade services. Our experienced professionals diligently ensure that your software solutions stay up-to-date, secure, and optimized for peak performance."
+        icon: <Globe className="w-8 h-8 text-green-400" />,
+        description: "Upgrade services to ensure your software is always up-to-date and running efficiently."
     },
     {
         title: "Data Migration Services",
-        icon: <Database className="w-8 h-8" />,
-        description: "Seamless data migration solutions ensuring zero data loss and minimal downtime."
+        icon: <Database className="w-8 h-8 text-purple-400" />,
+        description: "Seamless data migration ensuring zero data loss and minimal downtime."
     }
 ];
 
 const techStack = [
-    { name: "Java", icon: "/path-to-java-icon.svg" },
-    { name: "Python", icon: "/path-to-python-icon.svg" },
-    { name: "Laravel", icon: "/path-to-laravel-icon.svg" },
-    { name: "React Native", icon: "/path-to-react-native-icon.svg" },
-    { name: "PHP", icon: "/path-to-php-icon.svg" },
-    { name: "Android", icon: "/path-to-android-icon.svg" },
-    { name: "JavaScript", icon: "/path-to-js-icon.svg" },
-    { name: "Swift", icon: "/path-to-swift-icon.svg" },
-    { name: "Node.js", icon: "/path-to-nodejs-icon.svg" },
-    { name: "GraphQL", icon: "/path-to-graphql-icon.svg" },
-    { name: "Windows", icon: "/path-to-windows-icon.svg" },
-    { name: "Vue.js", icon: "/path-to-vuejs-icon.svg" }
+    { name: "Java", icon: <Coffee className="w-12 h-12 text-yellow-400" /> },
+    { name: "Python", icon: <Cpu className="w-12 h-12 text-green-400" /> },
+    { name: "Laravel", icon: <CodeSquare className="w-12 h-12 text-red-400" /> },
+    { name: "React Native", icon: <Smartphone className="w-12 h-12 text-blue-400" /> },
+    { name: "PHP", icon: <Server className="w-12 h-12 text-indigo-400" /> },
+    { name: "Android", icon: <Cloud className="w-12 h-12 text-green-500" /> },
+    { name: "JavaScript", icon: <Terminal className="w-12 h-12 text-yellow-400" /> },
+    { name: "Swift", icon: <Apple className="w-12 h-12 text-white" /> },
+    { name: "Node.js", icon: <Box className="w-12 h-12 text-green-400" /> },
+    { name: "GraphQL", icon: <Globe2 className="w-12 h-12 text-pink-400" /> },
 ];
 
 const ServicesAndTechStack = () => {
@@ -95,7 +108,7 @@ const ServicesAndTechStack = () => {
                         </h2>
                     </motion.div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                         {techStack.map((tech, index) => (
                             <motion.div
                                 key={index}
@@ -105,11 +118,7 @@ const ServicesAndTechStack = () => {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className="aspect-square flex flex-col items-center justify-center p-6 rounded-xl bg-gray-900/30 border border-gray-800/50 hover:border-blue-500/50 transition-all duration-300 group"
                             >
-                                <img
-                                    src={tech.icon}
-                                    alt={tech.name}
-                                    className="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300"
-                                />
+                                {tech.icon}
                                 <span className="text-sm text-gray-400 group-hover:text-white transition-colors">
                                     {tech.name}
                                 </span>

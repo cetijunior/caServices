@@ -12,7 +12,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed select-none top-0 left-0 right-0 z-50 bg-gradient-to-l from-black to-gray-900 border-b border-gray-800">
+        <nav className="fixed z-50 select-none top-0 left-0 right-0 bg-gradient-to-l from-black to-gray-900 border-b border-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
@@ -64,7 +64,7 @@ const Navbar = () => {
             {/* Mobile Navigation */}
             <div
                 className={`
-          md:hidden top-16 fixed inset-0 bg-gradient-to-r from-black to-gray-900 backdrop-blur-sm transition-all duration-300 ease-in-out
+          md:hidden top-16 fixed inset-0 bg-gradient-to-l from-black to-gray-950 backdrop-blur-lg transition-all duration-300 ease-in-out
           ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"}
         `}
             >
