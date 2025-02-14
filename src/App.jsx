@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -15,21 +15,28 @@ import Contact from "./pages/Contact";
 
 const AppContent = () => {
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
 
   return (
     <>
-      <Navbar />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Landing />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </AnimatePresence>
-      <Footer />
+      {loading ? (
+        <Loader onFinish={() => setLoading(false)} />
+      ) : (
+        <>
+          <Navbar />
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Landing />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </AnimatePresence>
+          <Footer />
+        </>
+      )}
     </>
   );
 };
@@ -37,7 +44,6 @@ const AppContent = () => {
 function App() {
   return (
     <BrowserRouter>
-      <Loader />
       <AppContent />
     </BrowserRouter>
   );

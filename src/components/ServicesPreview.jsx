@@ -70,7 +70,7 @@ const ServicesAndTechStack = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                                className="group relative p-6 rounded-2xl bg-gray-900/30 border border-gray-800/50 hover:border-blue-500/50 transition-all duration-300"
+                                className="group relative p-6  rounded-2xl bg-gray-900/30 border border-gray-800/50 hover:border-blue-500/50 transition-all duration-300"
                             >
                                 <div className="mb-4 p-3 rounded-lg bg-blue-500/10 w-fit">
                                     {service.icon}
@@ -116,7 +116,7 @@ const ServicesAndTechStack = () => {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 whileHover={{ y: -5 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="aspect-square flex flex-col items-center justify-center p-6 rounded-xl bg-gray-900/30 border border-gray-800/50 hover:border-blue-500/50 transition-all duration-300 group"
+                                className="aspect-square hover:scale-110 flex flex-col items-center justify-center p-6 rounded-xl bg-gray-900/30 border border-gray-800/50 hover:border-blue-500/50 transition-all duration-300 group"
                             >
                                 {tech.icon}
                                 <span className="text-sm text-gray-400 group-hover:text-white transition-colors">

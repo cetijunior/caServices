@@ -1,29 +1,40 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Loader = () => {
-    const location = useLocation();
+const Loader = ({ onFinish }) => {
+    const [isVisible, setIsVisible] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(false);
+            onFinish(); // Notify parent that the loader is finished
+        }, 2000); // Adjust time to match animation duration
+
+        return () => clearTimeout(timer);
+    }, [onFinish]);
 
     return (
         <AnimatePresence mode="wait">
-            <motion.div
-                key={location.pathname}
-                initial={{ opacity: 0, opacity: 1, scale: 1 }}
-                animate={{ opacity: 0, scale: 1.1 }}
-                transition={{ duration: 4, ease: "easeInOut" }} // Slower transition
-                className="fixed inset-0 bg-black flex items-center justify-center z-50"
-            >
-                {/* Rotating Logo with Smoother Transition */}
-                <motion.img
-                    src="/assets/logos/logo.png" // Replace with your actual logo path
-                    alt="Loading..."
-                    initial={{ rotate: 0, scale: 0.8, }}
-                    animate={{ rotate: 360, scale: 1, opacity: 0, }}
-                    transition={{ duration: 1, opacity: 0, ease: "easeInOut" }} // Matches the transition time
-                    className="w-24 h-24 opacity-80"
-                />
-            </motion.div>
+            {isVisible && (
+                <motion.div
+                    key="loader"
+                    initial={{ opacity: 1, scale: 1 }}
+                    animate={{ opacity: 0, scale: 1.1 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 flex items-center justify-center w-full h-full bg-black z-[999]"
+                >
+                    {/* Rotating Logo */}
+                    <motion.img
+                        src="/assets/logos/logo.png" // Replace with actual logo path
+                        alt="Loading..."
+                        initial={{ rotate: 0, scale: 0.8 }}
+                        animate={{ rotate: 360, scale: 1, opacity: 0 }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
+                        className="w-24 h-24 opacity-80"
+                    />
+                </motion.div>
+            )}
         </AnimatePresence>
     );
 };

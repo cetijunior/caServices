@@ -11,7 +11,6 @@ export default {
                 textAccent: "var(--text-accent)",
                 btnPrimary: "var(--btn-primary)",
                 btnHover: "var(--btn-hover)",
-                borderLight: "var(--border-light)",
             },
         },
     },

@@ -1,47 +1,77 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const location = useLocation();
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
-        // Prevent scrolling when menu is open
-        document.body.style.overflow = !isOpen ? "hidden" : "unset";
+        document.body.style.overflow = isOpen ? "unset" : "hidden";
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Smooth scrolling effect
+        });
+    };
+
+
+    // Handle navbar background on scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 0);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const navLinks = [
+        { title: "Home", path: "/" },
+        { title: "About", path: "/about" },
+        { title: "Projects", path: "/projects" },
+        { title: "Services", path: "/services" },
+        { title: "Careers", path: "/careers" },
+        { title: "Contact", path: "/contact" },
+    ];
+
     return (
-        <nav className="fixed z-50 select-none top-0 left-0 right-0 bg-gradient-to-l from-black to-gray-900 border-b border-gray-800">
+        <nav className={`fixed select-none bg-gradient-to-r from-gray-900 to-black top-0 left-0 right-0 z-[100] transition-all duration-300 ease-in-out
+            ${scrolled
+                ? "bg-transparent backdrop-blur-md shadow-lg "
+                : "bg-transparent "}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
+                <div onClick={scrollToTop} className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link
                         to="/"
-                        className="flex items-center space-x-3 text-white hover:opacity-90 transition"
+                        className="flex items-center space-x-3 text-white group transition-transform duration-300 hover:scale-105"
                     >
-                        <img src="/assets/logos/logo.png" alt="CA Logo" className="md:size-10 w-8 h-8" />
-                        <span className="md:text-3xl text-2xl  font-bold bg-gradient-to-r from-white to-gray-600 bg-clip-text text-transparent">
+                        <img src="/assets/logos/logo.png" alt="CA Logo" className="w-8 h-8 hover:animate-spin" />
+                        <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent
+                            group-hover:from-blue-300 group-hover:to-teal-300 transition-all duration-300">
                             CA
                         </span>
                     </Link>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-8">
-                        {[
-                            ["Home", "/"],
-                            ["About", "/about"],
-                            ["Projects", "/projects"],
-                            ["Services", "/services"],
-                            ["Careers", "/careers"],
-                            ["Contact", "/contact"],
-                        ].map(([title, url]) => (
+                        {navLinks.map(({ title, path }) => (
                             <Link
                                 key={title}
-                                to={url}
-                                className="text-gray-300 hover:text-white hover:scale-105 transition-all duration-200 text-sm font-medium"
+                                to={path}
+                                className={`relative text-gray-300 transition-all duration-300 text-sm font-medium 
+                                    group hover:text-white
+                                    ${location.pathname === path ? "text-blue-400" : ""}`}
                             >
                                 {title}
+                                <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 
+                                    group-hover:w-full
+                                    ${location.pathname === path ? "w-full" : ""}`}>
+                                </span>
                             </Link>
                         ))}
                     </div>
@@ -49,13 +79,14 @@ const Navbar = () => {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={toggleMenu}
-                        className="md:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                        className={`md:hidden p-2 rounded-md transition-colors duration-300
+                            hover:text-white focus:outline
+                            ${scrolled ? 'text-gray-400 hover:bg-gray-700/50' : 'text-white hover:bg-white/10'}`}
                     >
-                        <span className="sr-only">Open main menu</span>
                         {isOpen ? (
-                            <X className="transition-all duration-75 h-8 w-8" aria-hidden="true" />
+                            <X className="h-6 w-6 transition-transform duration-300 rotate-90" />
                         ) : (
-                            <Menu className="transition-all duration-75 h-8 w-8" aria-hidden="true" />
+                            <Menu className="h-6 w-6 transition-transform duration-300" />
                         )}
                     </button>
                 </div>
@@ -63,27 +94,32 @@ const Navbar = () => {
 
             {/* Mobile Navigation */}
             <div
-                className={`
-          md:hidden top-16 fixed inset-0 bg-gradient-to-l from-black to-gray-950 backdrop-blur-lg transition-all duration-300 ease-in-out
-          ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"}
-        `}
+                className={`md:hidden fixed h-screen top-16 inset-0 bg-gradient-to-r from-gray-900 to-black shadow-lg backdrop-blur-lg
+                    transition-all duration-500 ease-in-out transform
+                    ${isOpen
+                        ? "opacity-100 translate-x-0 "
+                        : "opacity-0 translate-x-full pointer-events-none"}`}
             >
-                <div className="flex flex-col items-center justify-evenly h-full space-y-8 p-4">
-                    {[
-                        ["Home", "/"],
-                        ["About", "/about"],
-                        ["Projects", "/projects"],
-                        ["Services", "/services"],
-                        ["Careers", "/careers"],
-                        ["Contact", "/contact"],
-                    ].map(([title, url]) => (
+                <div className="flex flex-col items-center justify-evenly h-full space-y-0 pb-20">
+                    {navLinks.map(({ title, path }, index) => (
                         <Link
                             key={title}
-                            to={url}
+                            to={path}
                             onClick={toggleMenu}
-                            className="text-white text-2xl font-medium hover:text-blue-400 transition-colors duration-200"
+                            style={{
+                                transitionDelay: `${isOpen ? index * 100 : 0}ms`
+                            }}
+                            className={`relative text-white text-2xl font-medium
+                                transition-all duration-300 ease-out transform
+                                ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"}
+                                hover:text-blue-400 hover:scale-105
+                                ${location.pathname === path ? "text-blue-400" : ""}`}
                         >
-                            [ {title} ]
+                            {title}
+                            <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 
+                                transition-all duration-300 hover:w-full
+                                ${location.pathname === path ? "w-full" : ""}`}>
+                            </span>
                         </Link>
                     ))}
                 </div>
