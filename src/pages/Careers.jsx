@@ -17,7 +17,7 @@ const Careers = () => {
     });
 
     return (
-        <div className="pt-16 min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+        <div className="pt-16 bg-gradient-to-b from-black to-gray-900 text-white">
             {/* Hero Section */}
             <section className="relative overflow-hidden">
                 <div className="absolute inset-0 bg-blue-500/10 backdrop-blur-3xl"></div>

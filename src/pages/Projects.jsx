@@ -37,8 +37,16 @@ const projects = [
 ];
 
 const Projects = () => {
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Smooth scrolling effect
+        });
+    };
+
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="bg-black text-white">
             {/* Hero Section */}
             <div className="relative py-20 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4">
@@ -59,6 +67,7 @@ const Projects = () => {
                             <TiltedCard
                                 imageSrc={project.image}
                                 altText={project.title}
+                                captionText={project.title}
                                 containerHeight="600px"
                                 containerWidth="100%"
                                 imageHeight="100%"
@@ -66,10 +75,11 @@ const Projects = () => {
                                 rotateAmplitude={12}
                                 scaleOnHover={1.05}
                                 showMobileWarning={false}
-                                showTooltip={false}
+                                showTooltip={true}
+
                                 displayOverlayContent={true}
                                 overlayContent={
-                                    <div className={`w-full h-full shadow-2xl shadow-${project.bgColor} flex flex-col justify-between p-8 ${project.bgColor} bg-opacity-80 backdrop-blur-sm`}>
+                                    <div onClick={scrollToTop} className={`w-full h-full cursor-pointer shadow-2xl shadow-${project.bgColor} flex flex-col justify-between p-8 ${project.bgColor} bg-opacity-80 backdrop-blur-sm`}>
                                         {/* Top Section */}
                                         <div className="flex justify-between items-start">
                                             <span className="px-4 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">
