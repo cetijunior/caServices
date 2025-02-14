@@ -1,11 +1,11 @@
 import React from 'react'
-import Hero from '../components/Hero'
-import ProjectsPreview from '../components/ProjectsPreview'
-import ServicesPreview from '../components/ServicesPreview'
+import Hero from '../components/Landing/Hero'
+import ProjectsPreview from '../components/Landing/ProjectsPreview'
+import ServicesPreview from '../components/Landing/ServicesPreview'
 
 const Landing = () => {
     return (
-        <div className="pt-16">
+        <div className="">
 
             <Hero />
             <ProjectsPreview />

@@ -1,7 +1,5 @@
 import { useRef, useEffect } from "react";
-import './Waves.css';
 
-// Noise + Grad (unchanged)
 class Grad {
     constructor(x, y, z) {
         this.x = x; this.y = y; this.z = z;
@@ -63,15 +61,15 @@ class Noise {
 export default function Waves({
     lineColor = "black",
     backgroundColor = "transparent",
-    waveSpeedX = 0.0125,   // per-frame horizontal speed factor
-    waveSpeedY = 0.005,    // per-frame vertical speed factor
-    waveAmpX = 32,         // horizontal amplitude
-    waveAmpY = 16,         // vertical amplitude
-    xGap = 10,             // horizontal gap between lines
-    yGap = 32,             // vertical gap between points
-    friction = 0.925,      // friction for cursor effect
-    tension = 0.005,       // tension for cursor effect
-    maxCursorMove = 100,   // clamp for cursor x/y
+    waveSpeedX = 0.0125,
+    waveSpeedY = 0.005,
+    waveAmpX = 32,
+    waveAmpY = 16,
+    xGap = 10,
+    yGap = 32,
+    friction = 0.925,
+    tension = 0.005,
+    maxCursorMove = 100,
     style = {},
     className = ""
 }) {
@@ -118,10 +116,11 @@ export default function Waves({
         }
 
         function movePoints(time) {
-            const lines = linesRef.current, mouse = mouseRef.current, noise = noiseRef.current;
+            const lines = linesRef.current;
+            const mouse = mouseRef.current;
+            const noise = noiseRef.current;
             lines.forEach((pts) => {
                 pts.forEach((p) => {
-                    // Wave noise
                     const move = noise.perlin2(
                         (p.x + time * waveSpeedX) * 0.002,
                         (p.y + time * waveSpeedY) * 0.0015
@@ -129,7 +128,6 @@ export default function Waves({
                     p.wave.x = Math.cos(move) * waveAmpX;
                     p.wave.y = Math.sin(move) * waveAmpY;
 
-                    // Mouse effect
                     const dx = p.x - mouse.sx, dy = p.y - mouse.sy;
                     const dist = Math.hypot(dx, dy), l = Math.max(175, mouse.vs);
                     if (dist < l) {
@@ -138,14 +136,14 @@ export default function Waves({
                         p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00065;
                         p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00065;
                     }
-                    // Tension + friction
+
                     p.cursor.vx += (0 - p.cursor.x) * tension;
                     p.cursor.vy += (0 - p.cursor.y) * tension;
                     p.cursor.vx *= friction;
                     p.cursor.vy *= friction;
                     p.cursor.x += p.cursor.vx * 2;
                     p.cursor.y += p.cursor.vy * 2;
-                    // Clamp
+
                     p.cursor.x = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.x));
                     p.cursor.y = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.y));
                 });
@@ -180,10 +178,10 @@ export default function Waves({
 
         function tick(t) {
             const mouse = mouseRef.current;
-            // Smooth mouse
+
             mouse.sx += (mouse.x - mouse.sx) * 0.1;
             mouse.sy += (mouse.y - mouse.sy) * 0.1;
-            // Velocity
+
             const dx = mouse.x - mouse.lx, dy = mouse.y - mouse.ly;
             const d = Math.hypot(dx, dy);
             mouse.v = d;
@@ -191,7 +189,7 @@ export default function Waves({
             mouse.vs = Math.min(100, mouse.vs);
             mouse.lx = mouse.x; mouse.ly = mouse.y;
             mouse.a = Math.atan2(dy, dx);
-            // Animate circle
+
             container.style.setProperty("--x", `${mouse.sx}px`);
             container.style.setProperty("--y", `${mouse.sy}px`);
 
@@ -201,15 +199,19 @@ export default function Waves({
         }
 
         function onResize() {
-            setSize(); setLines();
+            setSize();
+            setLines();
         }
-        function onMouseMove(e) { updateMouse(e.pageX, e.pageY); }
+        function onMouseMove(e) {
+            updateMouse(e.pageX, e.pageY);
+        }
         function onTouchMove(e) {
             const touch = e.touches[0];
             updateMouse(touch.clientX, touch.clientY);
         }
         function updateMouse(x, y) {
-            const mouse = mouseRef.current, b = boundingRef.current;
+            const mouse = mouseRef.current;
+            const b = boundingRef.current;
             mouse.x = x - b.left;
             mouse.y = y - b.top + window.scrollY;
             if (!mouse.set) {
@@ -240,16 +242,23 @@ export default function Waves({
     return (
         <div
             ref={containerRef}
-            className={`waves ${className}`}
             style={{
-                position: "absolute",
-                top: 0, left: 0, margin: 0, padding: 0,
-                width: "100%", height: "100%", overflow: "hidden",
                 backgroundColor,
                 ...style
             }}
+            className={`absolute top-0 left-0 w-full h-full overflow-hidden ${className}`}
         >
-            <canvas ref={canvasRef} style={{ display: "block", width: "100%", height: "100%" }} />
+            <div
+                className="absolute top-0 left-0 bg-[#160000] rounded-full w-[0.5rem] h-[0.5rem]"
+                style={{
+                    transform: "translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)",
+                    willChange: "transform"
+                }}
+            />
+            <canvas
+                ref={canvasRef}
+                className="block w-full h-full"
+            />
         </div>
     );
 }

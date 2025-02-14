@@ -58,7 +58,7 @@ const TeamSection = () => {
     return (
         <section className="relative bg-black py-24 px-6">
             {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900 opacity-90"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-black opacity-90"></div>
 
             {/* Content Container */}
             <div className="relative z-10 max-w-7xl mx-auto text-center">

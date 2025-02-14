@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Loader from "./components/Loader";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Loader from "./components/layout/Loader";
 
 import Landing from "./pages/Landing";
 import About from "./pages/About";
@@ -22,7 +22,7 @@ const AppContent = () => {
       {loading ? (
         <Loader onFinish={() => setLoading(false)} />
       ) : (
-        <>
+        <div className="">
           <Navbar />
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
@@ -35,7 +35,7 @@ const AppContent = () => {
             </Routes>
           </AnimatePresence>
           <Footer />
-        </>
+        </div>
       )}
     </>
   );

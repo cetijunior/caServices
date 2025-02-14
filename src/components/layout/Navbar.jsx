@@ -39,10 +39,10 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className={`fixed select-none bg-gradient-to-r from-gray-900 to-black top-0 left-0 right-0 z-[100] transition-all duration-300 ease-in-out
+        <nav className={`fixed select-none  top-0 left-0 right-0 z-[100] transition-colors duration-500 ease-in-out
             ${scrolled
-                ? "bg-transparent backdrop-blur-md shadow-lg "
-                : "bg-transparent "}`}>
+                ? "bg-gradient-to-r from-gray-900 to-black "
+                : ""}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div onClick={scrollToTop} className="flex items-center justify-between h-16">
                     {/* Logo */}
