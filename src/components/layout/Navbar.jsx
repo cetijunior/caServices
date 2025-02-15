@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import Waves from "../Waves";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ const Navbar = () => {
         setIsOpen(!isOpen);
         document.body.style.overflow = isOpen ? "unset" : "hidden";
     };
+
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -94,13 +96,26 @@ const Navbar = () => {
 
             {/* Mobile Navigation */}
             <div
-                className={`md:hidden fixed h-screen top-16 inset-0 bg-gradient-to-r from-gray-900 to-black shadow-lg backdrop-blur-lg
-                    transition-all duration-500 ease-in-out transform
+                className={`md:hidden fixed h-screen top-16 inset-0  shadow-lg backdrop-blur-sm
+                    transition-all bg-black duration-500 ease-in-out transform
                     ${isOpen
-                        ? "opacity-100 translate-x-0 "
+                        ? "opacity-100 translate-x-0  "
                         : "opacity-0 translate-x-full pointer-events-none"}`}
             >
-                <div className="flex flex-col items-center justify-evenly h-full space-y-0 pb-20">
+                <Waves
+                    lineColor="#ffffff40"
+                    backgroundColor="rgba(0, 0, 0, 0.95)"
+                    waveSpeedX={0.03}
+                    waveSpeedY={0.02}
+                    waveAmpX={35}
+                    waveAmpY={25}
+                    friction={0.95}
+                    tension={0.025}
+                    maxCursorMove={80}
+                    xGap={24}
+                    yGap={40}
+                />
+                <div className="flex flex-col items-center justify-start space-y-10 py-28 h-full">
                     {navLinks.map(({ title, path }, index) => (
                         <Link
                             key={title}
@@ -109,17 +124,17 @@ const Navbar = () => {
                             style={{
                                 transitionDelay: `${isOpen ? index * 100 : 0}ms`
                             }}
-                            className={`relative text-white text-2xl font-medium
+                            className={`relative border rounded-4xl px-14 p-2 text-white text-2xl font-medium
                                 transition-all duration-300 ease-out transform
                                 ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"}
                                 hover:text-blue-400 hover:scale-105
-                                ${location.pathname === path ? "text-blue-400" : ""}`}
+                                ${location.pathname === path ? "border-2 border-blue-400" : ""}`}
                         >
                             {title}
-                            <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 
+                            {/* <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 
                                 transition-all duration-300 hover:w-full
                                 ${location.pathname === path ? "w-full" : ""}`}>
-                            </span>
+                            </span> */}
                         </Link>
                     ))}
                 </div>

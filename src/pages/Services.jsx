@@ -1,20 +1,107 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Globe, Database, Code, Ruler } from "lucide-react";
+import {
+    Globe, Database, Code, Ruler, BrainCircuit, Shield, Cloud, ChevronRight,
+} from "lucide-react";
 import TiltedCard from "../components/TiltedCard";
-import Dock from "../components/Dock";
+import SplitText from "../components/SplitText";
 import Waves from "../components/Waves";
 import FlowingMenu from "../components/FlowingMenu";
 import Particles from "../components/Particles";
 import InfiniteScroll from "../components/InfiniteScroll";
+import SpotlightCard from "../components/SpotlightCard";
+import FadeContent from "../components/FadeContent";
 
 const Services = () => {
+
+    const [activeService, setActiveService] = useState(null);
+
+
+    const containerVariants = {
+        hidden: { opacity: 0, x: -50 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut",
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.5,
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const features = [
+        "Dynamic tilt effect on hover",
+        "Customizable rotation amplitude",
+        "Responsive design",
+        "Optional overlay content"
+    ];
+
     const dockItems = [
         { icon: <Code size={18} />, label: "Development", onClick: () => console.log("Software Development!") },
         { icon: <Globe size={18} />, label: "Upgrade", onClick: () => console.log("Upgrade Services!") },
         { icon: <Database size={18} />, label: "Migration", onClick: () => console.log("Data Migration!") },
         { icon: <Ruler size={18} />, label: "Architecture", onClick: () => console.log("Software Architecture!") },
     ];
+
+
+    const coreServices = [
+        {
+            id: 'ai',
+            title: "AI & Machine Learning",
+            icon: <BrainCircuit size={32} />,
+            color: "from-violet-500 to-purple-600",
+            description: "Transform your data into actionable intelligence",
+            capabilities: [
+                "Predictive Analytics",
+                "Natural Language Processing",
+                "Computer Vision",
+                "Automated Decision Systems"
+            ]
+        },
+        {
+            id: 'security',
+            title: "Enterprise Security",
+            icon: <Shield size={32} />,
+            color: "from-emerald-500 to-green-600",
+            description: "Protect your digital assets with military-grade security",
+            capabilities: [
+                "Zero Trust Architecture",
+                "Threat Detection & Response",
+                "Security Auditing",
+                "Compliance Management"
+            ]
+        },
+        {
+            id: 'cloud',
+            title: "Cloud Architecture",
+            icon: <Cloud size={32} />,
+            color: "from-blue-500 to-cyan-600",
+            description: "Scale your infrastructure with confidence",
+            capabilities: [
+                "Multi-Cloud Strategy",
+                "Container Orchestration",
+                "Serverless Computing",
+                "High Availability Systems"
+            ]
+        }
+    ];
+
+
+
+
 
     const services = [
         {
@@ -53,11 +140,11 @@ const Services = () => {
     ];
 
     return (
-        <div className="bg-black min-h-screen">
+        <div className="bg-black min-h-screen w-full">
             {/* Hero Section */}
             <section className="relative w-full h-screen flex items-center justify-center bg-black overflow-hidden">
                 {/* Particles Background */}
-                <div className="absolute z-10 inset-0">
+                <div className="absolute inset-0">
                     <Particles
                         particleColors={['#ffffff', '#ffffff']}
                         particleCount={200}
@@ -65,21 +152,21 @@ const Services = () => {
                         speed={0.1}
                         particleBaseSize={100}
                         moveParticlesOnHover={true}
-                        className="w-full h-[100%]"
+                        className="w-full h-full"
                     />
                 </div>
 
-                {/* Text Content */}
-                <div className="relative cursor-default text-center px-6">
+                {/* Hero Content */}
+                <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-7xl font-extrabold text-white tracking-wide mb-6"
+                        className="text-6xl sm:text-7xl font-extrabold text-white tracking-wide mb-6"
                     >
                         Interactive Component Showcase
                     </motion.h1>
-                    <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+                    <p className="text-gray-400 text-lg sm:text-xl">
                         Explore our collection of stunning, interactive components that power modern web experiences.
                     </p>
                 </div>
@@ -87,30 +174,85 @@ const Services = () => {
 
 
             {/* TiltedCard Showcase */}
-            <section className="py-24 px-6 bg-gradient-to-br from-[#00111c] to-violet-300/20">
+            <section className="lg:py-12  lg:px-6 bg-gradient-to-br from-[#00111c] to-violet-300/20">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="space-y-6"
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                            }}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            className="w-full mx-auto container lg:mt-0 mt-20  p-8 rounded-2xl bg-gradient-to-br shadow-2xl  from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50"
                         >
-                            <h2 className="text-4xl font-bold text-white">Tilted Card Component</h2>
-                            <p className="text-gray-400 text-lg">
+                            <motion.div
+                                variants={itemVariants}
+                                className="inline-block mb-6 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20"
+                            >
+                                <span className="text-sm font-medium text-purple-400">
+                                    Component Showcase
+                                </span>
+                            </motion.div>
+
+                            <motion.h2
+                                variants={itemVariants}
+                                className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 mb-4"
+                            >
+                                Tilted Card Component
+                            </motion.h2>
+
+                            <motion.p
+                                variants={itemVariants}
+                                className="text-lg text-gray-400 mb-8 leading-relaxed"
+                            >
                                 Add depth and interactivity to your content with our TiltedCard component.
                                 Features smooth animations, hover effects, and customizable overlay content.
-                            </p>
-                            <ul className="space-y-3 text-gray-300">
-                                <li>• Dynamic tilt effect on hover</li>
-                                <li>• Customizable rotation amplitude</li>
-                                <li>• Responsive design</li>
-                                <li>• Optional overlay content</li>
-                            </ul>
+                            </motion.p>
+
+                            <motion.div
+                                variants={itemVariants}
+                                className="space-y-3"
+                            >
+                                {features.map((feature, index) => (
+                                    <motion.div
+                                        key={feature}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="flex items-center space-x-3"
+                                    >
+                                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                                        <motion.span
+                                            whileHover={{ x: 4 }}
+                                            className="text-gray-300 font-medium"
+                                        >
+                                            {feature}
+                                        </motion.span>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+
+                            <motion.div
+                                variants={itemVariants}
+                                className="mt-8 pt-8 border-t border-gray-800/50"
+                            >
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-shadow"
+                                >
+                                    Explore Documentation
+                                </motion.button>
+                            </motion.div>
                         </motion.div>
+
+
                         <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="items-center bg-black rounded-2xl shadow-2xl shadow-black justify-center w-full mx-auto self-center"
+                            initial={{ opacity: 0, }}
+                            whileInView={{ opacity: 1, }}
+                            className="items-center justify-center w-full mx-auto self-center lg:scale-90 scale-75 bg-black rounded-2xl shadow-2xl shadow-black"
                         >
                             <TiltedCard
                                 imageSrc="/assets/logos/logo.png"
@@ -135,15 +277,158 @@ const Services = () => {
                 </div>
             </section>
 
+
+            {/* Core Services Section */}
+            <section className="relative">
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#00111c] to-violet-300/20" />
+
+                <div className="relative z-10  mx-auto px-6">
+                    <SplitText className="text-4xl md:text-5xl font-bold text-center mb-16">
+                        Our Core Services
+                    </SplitText>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        {coreServices.map((service) => (
+                            <SpotlightCard
+                                key={service.id}
+                                className="p-8 bg-black shadow-lg hover:shadow-2xl shadow-black hover:shadow-black backdrop-blur-sm rounded-2xl hover:bg-[#00111c]/90 transition-all duration-300"
+                                onMouseEnter={() => setActiveService(service.id)}
+                                onMouseLeave={() => setActiveService(null)}
+                            >
+                                <Waves
+                                    lineColor="#ffffff40"
+                                    className="-z-10"
+                                />
+                                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} flex items-center justify-center mb-6`}>
+                                    {service.icon}
+                                </div>
+
+                                <h3 className="text-2xl font-bold text-white mb-4">
+                                    {service.title}
+                                </h3>
+
+                                <p className="text-gray-400 mb-6">
+                                    {service.description}
+                                </p>
+
+                                <FadeContent
+                                    className="space-y-3"
+                                    show={activeService === service.id}
+                                >
+                                    {service.capabilities.map((capability) => (
+                                        <div
+                                            key={capability}
+                                            className="flex items-center text-gray-300"
+                                        >
+                                            <ChevronRight className="w-4 h-4 mr-2 text-purple-400" />
+                                            {capability}
+                                        </div>
+                                    ))}
+                                </FadeContent>
+                            </SpotlightCard>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
             {/* Infinite Scroll Showcase */}
-            <section className="py-24 px-6 bg-gradient-to-tr from-[#00111c] to-violet-300/20">
+            <section className="py-24 px-6 bg-gradient-to-br from-[#00111c] to-violet-300/20">
                 <div className="max-w-8xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
                         <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                            }}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            className="w-full mx-auto container p-8 rounded-2xl bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50 shadow-lg"
                         >
-                            <div className="h-96 w-full overflow-hidden bg-black shadow-2xl shadow-black rounded-xl">
+                            {/* Header Badge */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0, transition: { delay: 0.1, duration: 0.6 } }}
+                                className="inline-block mb-6 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20"
+                            >
+                                <span className="text-sm font-medium text-blue-400">
+                                    Scrolling Innovation
+                                </span>
+                            </motion.div>
+
+                            {/* Title */}
+                            <motion.h2
+                                initial={{ opacity: 0, y: -10 }}
+                                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.2, duration: 0.6 } }}
+                                className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 mb-4"
+                            >
+                                Infinite Scroll Component
+                            </motion.h2>
+
+                            {/* Description */}
+                            <motion.p
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.6 } }}
+                                className="text-lg text-gray-400 mb-8 leading-relaxed"
+                            >
+                                Create engaging content streams with our InfiniteScroll component.
+                                Perfect for showcasing continuous content in an elegant way.
+                            </motion.p>
+
+                            {/* Features List */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.4, duration: 0.6 } }}
+                                className="space-y-3"
+                            >
+                                {[
+                                    "Smooth automatic scrolling",
+                                    "Customizable speed and direction",
+                                    "Pause on hover functionality",
+                                    "Tilted text effect option"
+                                ].map((feature, index) => (
+                                    <motion.div
+                                        key={feature}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0, transition: { delay: index * 0.1 } }}
+                                        className="flex items-center space-x-3"
+                                    >
+                                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                                        <motion.span
+                                            whileHover={{ x: 4 }}
+                                            className="text-gray-300 font-medium"
+                                        >
+                                            {feature}
+                                        </motion.span>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+
+                            {/* CTA Button */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.5, duration: 0.8 } }}
+                                className="mt-8 pt-8 border-t border-gray-800/50 text-center"
+                            >
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-shadow"
+                                >
+                                    Explore More
+                                </motion.button>
+                            </motion.div>
+                        </motion.div>
+
+
+                        <motion.div
+                            initial={{ opacity: 0, }}
+                            whileInView={{ opacity: 1, }}
+                        >
+                            <div className="lg:h-[34rem] container mx-auto h-full w-full overflow-hidden bg-black shadow-2xl shadow-black rounded-xl">
                                 <InfiniteScroll
                                     items={scrollingItems}
                                     isTilted={true}
@@ -155,58 +440,111 @@ const Services = () => {
                                 />
                             </div>
                         </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="space-y-6"
-                        >
-                            <h2 className="text-4xl font-bold text-white">Infinite Scroll Component</h2>
-                            <p className="text-gray-400 text-lg">
-                                Create engaging content streams with our InfiniteScroll component.
-                                Perfect for showcasing continuous content in an elegant way.
-                            </p>
-                            <ul className="space-y-3 text-gray-300">
-                                <li>• Smooth automatic scrolling</li>
-                                <li>• Customizable speed and direction</li>
-                                <li>• Pause on hover functionality</li>
-                                <li>• Tilted text effect option</li>
-                            </ul>
-                        </motion.div>
+
                     </div>
                 </div>
             </section>
 
             {/* Flowing Menu Showcase */}
-            <section className="py-24 px-6 bg-gradient-to-br from-[#00111c] to-violet-300/20">
+            <section className="py-24 px-6 bg-gradient-to-tr from-[#00111c] to-violet-300/20">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="space-y-6"
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                            }}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            className="w-full container mx-auto p-8 rounded-2xl bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50 shadow-lg"
                         >
-                            <h2 className="text-4xl font-bold text-white">Flowing Menu Component</h2>
-                            <p className="text-gray-400 text-lg">
+                            {/* Header Badge */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0, transition: { delay: 0.1, duration: 0.6 } }}
+                                className="inline-block mb-6 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20"
+                            >
+                                <span className="text-sm font-medium text-cyan-400">
+                                    Dynamic Navigation
+                                </span>
+                            </motion.div>
+
+                            {/* Title */}
+                            <motion.h2
+                                initial={{ opacity: 0, y: -10 }}
+                                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.2, duration: 0.6 } }}
+                                className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 mb-4"
+                            >
+                                Flowing Menu Component
+                            </motion.h2>
+
+                            {/* Description */}
+                            <motion.p
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.6 } }}
+                                className="text-lg text-gray-400 mb-8 leading-relaxed"
+                            >
                                 Transform your navigation with our FlowingMenu component.
                                 Create fluid, interactive menus that respond to user movement.
-                            </p>
-                            <ul className="space-y-3 text-gray-300">
-                                <li>• Smooth flowing animations</li>
-                                <li>• Image preview capabilities</li>
-                                <li>• Responsive design</li>
-                                <li>• Customizable styling</li>
-                            </ul>
+                            </motion.p>
+
+                            {/* Features List */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.4, duration: 0.6 } }}
+                                className="space-y-3"
+                            >
+                                {[
+                                    "Smooth flowing animations",
+                                    "Image preview capabilities",
+                                    "Responsive design",
+                                    "Customizable styling"
+                                ].map((feature, index) => (
+                                    <motion.div
+                                        key={feature}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0, transition: { delay: index * 0.1 } }}
+                                        className="flex items-center space-x-3"
+                                    >
+                                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                                        <motion.span
+                                            whileHover={{ x: 4 }}
+                                            className="text-gray-300 font-medium"
+                                        >
+                                            {feature}
+                                        </motion.span>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+
+                            {/* CTA Button */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.5, duration: 0.8 } }}
+                                className="mt-8 pt-8 border-t border-gray-800/50 text-center"
+                            >
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-medium shadow-lg shadow-cyan-500/20 hover:shadow-xl hover:shadow-cyan-500/30 transition-shadow"
+                                >
+                                    Explore More
+                                </motion.button>
+                            </motion.div>
                         </motion.div>
+
                         <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, }}
+                            whileInView={{ opacity: 1, }}
+                            className="bg-black p-3 h-full mx-auto container w-full rounded-2xl shadow-2xl shadow-black"
                         >
                             <FlowingMenu
                                 items={[
-                                    { link: '#', text: 'Custom Software', image: '/api/placeholder/600/400' },
-                                    { link: '#', text: 'Cloud Solutions', image: '/api/placeholder/600/400' },
-                                    { link: '#', text: 'AI & Data Science', image: '/api/placeholder/600/400' },
-                                    { link: '#', text: 'Cybersecurity', image: '/api/placeholder/600/400' },
+                                    { link: '#', text: 'Custom Software', image: 'https://picsum.photos/600/400?random=1' },
+                                    { link: '#', text: 'Cloud Solutions', image: 'https://picsum.photos/600/400?random=2' },
+                                    { link: '#', text: 'AI & Data Science', image: 'https://picsum.photos/600/400?random=3' },
+                                    { link: '#', text: 'Cybersecurity', image: 'https://picsum.photos/600/400?random=4' },
                                 ]}
                             />
                         </motion.div>

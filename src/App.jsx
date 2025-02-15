@@ -12,6 +12,7 @@ import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFoundPage";
 
 const AppContent = () => {
   const location = useLocation();
@@ -32,6 +33,7 @@ const AppContent = () => {
               <Route path="/services" element={<Services />} />
               <Route path="/careers" element={<Careers />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>
           <Footer />

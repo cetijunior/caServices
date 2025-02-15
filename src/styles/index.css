@@ -27,7 +27,7 @@ body {
 
 /* Customize Scrollbar for Dark Theme */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 2px;
 }
 
 ::-webkit-scrollbar-track {
@@ -36,7 +36,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--border-light);
-  border-radius: 10px;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
