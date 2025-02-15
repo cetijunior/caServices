@@ -115,7 +115,7 @@ const Navbar = () => {
                     xGap={24}
                     yGap={40}
                 />
-                <div className="flex flex-col items-center justify-start space-y-10 py-28 h-full">
+                <div className="flex flex-col items-center justify-start space-y-10 pt-10 h-full">
                     {navLinks.map(({ title, path }, index) => (
                         <Link
                             key={title}
