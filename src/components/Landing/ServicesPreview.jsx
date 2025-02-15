@@ -17,8 +17,8 @@ import {
     Apple,
 } from "lucide-react";
 import SpotlightCard from "../SpotlightCard"; // Interactive cards
-import RotatingText from "../ROtatingText";
 import Waves from "../Waves";
+import RotatingText from "../RotatingText"
 
 const services = [
     {
