@@ -16,7 +16,6 @@ import {
     Globe2,
     Apple,
 } from "lucide-react";
-import SplitText from "../SplitText"; // Animated text split
 import SpotlightCard from "../SpotlightCard"; // Interactive cards
 import RotatingText from "../ROtatingText";
 import Waves from "../Waves";
@@ -133,9 +132,9 @@ const ServicesAndTechStack = () => {
                         <h3 className="text-gray-400 mb-2 uppercase tracking-widest text-sm">
                             OUR TECHNOLOGY STACK
                         </h3>
-                        <SplitText className="text-4xl font-bold text-white">
-                            Why Choose <span className="text-blue-400">Our Expertise?</span>
-                        </SplitText>
+                        <h1 className="text-4xl mt-10 font-bold text-gray-400">
+                            Why Choose <span className="text-gray-400">Our Expertise?</span>
+                        </h1>
                     </motion.div>
 
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-10">

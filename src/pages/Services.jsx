@@ -4,7 +4,6 @@ import {
     Globe, Database, Code, Ruler, BrainCircuit, Shield, Cloud, ChevronRight,
 } from "lucide-react";
 import TiltedCard from "../components/TiltedCard";
-import SplitText from "../components/SplitText";
 import Waves from "../components/Waves";
 import FlowingMenu from "../components/FlowingMenu";
 import Particles from "../components/Particles";
@@ -283,9 +282,9 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#00111c] to-violet-300/20" />
 
                 <div className="relative z-10  mx-auto px-6">
-                    <SplitText className="text-4xl md:text-5xl font-bold text-center mb-16">
+                    <h1 className="text-4xl md:text-5xl text-gray-400 font-bold text-center mb-16">
                         Our Core Services
-                    </SplitText>
+                    </h1>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
