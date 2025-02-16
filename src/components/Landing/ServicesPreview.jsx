@@ -19,7 +19,7 @@ import {
 import SpotlightCard from "../SpotlightCard"; // Interactive cards
 import Waves from "../Waves";
 import RotatingText from "../RotatingText"
-
+//Leave thus 
 const services = [
     {
         title: "Software Development",

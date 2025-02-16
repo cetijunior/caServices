@@ -127,14 +127,16 @@ const Contact = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <motion.h2
+                    <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 }}
-                        className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-400 mb-8"
+                        transition={{ delay: 0.3 }}
+                        className="text-5xl md:text-6xl font-bold lg:mt-0 mt-10 pb-3 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-400 mb-6"
                     >
-                        Get in Touch
-                    </motion.h2>
+                        Send us a quick Email!
+                    </motion.h1>
+
+
 
                     {/* Contact Form */}
                     <form onSubmit={handleSubmit} className="space-y-6">

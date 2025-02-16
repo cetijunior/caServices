@@ -10,6 +10,7 @@ import Particles from "../components/Particles";
 import InfiniteScroll from "../components/InfiniteScroll";
 import SpotlightCard from "../components/SpotlightCard";
 import FadeContent from "../components/FadeContent";
+import RotatingText from "../components/RotatingText";
 
 const Services = () => {
 
@@ -156,7 +157,7 @@ const Services = () => {
                 </div>
 
                 {/* Hero Content */}
-                <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+                <div className="relative cursor-default z-0 text-center px-6 max-w-3xl mx-auto">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -235,7 +236,7 @@ const Services = () => {
 
                             <motion.div
                                 variants={itemVariants}
-                                className="mt-8 pt-8 border-t border-gray-800/50"
+                                className="flex items-center justify-center mt-8 pt-8 border-t border-gray-800/50"
                             >
                                 <motion.button
                                     whileHover={{ scale: 1.02 }}
@@ -249,15 +250,19 @@ const Services = () => {
 
 
                         <motion.div
-                            initial={{ opacity: 0, }}
-                            whileInView={{ opacity: 1, }}
-                            className="items-center justify-center w-full mx-auto self-center lg:scale-90 scale-75 bg-black rounded-2xl shadow-2xl shadow-black"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            className="w-full mx-auto container group lg:mt-0 rounded-2xl bg-gradient-to-br shadow-2xl from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50 relative overflow-hidden"
                         >
+                            {/* Glossy Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-20 pointer-events-none" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/5 opacity-20 pointer-events-none" />
+
                             <TiltedCard
                                 imageSrc="/assets/logos/logo.png"
                                 altText="Demo Card"
                                 captionText="Interactive Demo"
-                                containerHeight="610px"
+                                containerHeight="570px"
                                 containerWidth="100%"
                                 imageHeight="100%"
                                 imageWidth="100%"
@@ -265,9 +270,11 @@ const Services = () => {
                                 scaleOnHover={1.05}
                                 displayOverlayContent={true}
                                 overlayContent={
-                                    <div className="p-6 bg-black shadow-2xl shadow-black text-white">
-                                        <h3 className="text-2xl font-bold mb-4">Interactive Demo</h3>
-                                        <p>Hover and move your cursor to see the tilt effect in action!</p>
+                                    <div className="rounded-2xl group-hover:scale-90 group-hover:mt-6 cursor-default group group-hover:shadow-2xl p-6 text-purple-100 bg-gray-900/50 backdrop-blur-2xl shadow-black shadow-lg transition-all duration-300 border border-gray-800/50">
+                                        {/* Glossy Overlay for Content */}
+                                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-20 pointer-events-none rounded-2xl" />
+                                        <h3 className="text-2xl font-bold mb-4 relative z-10">Interactive Demo</h3>
+                                        <p className="relative z-10">Hover and move your cursor to see the tilt effect in action!</p>
                                     </div>
                                 }
                             />
@@ -279,14 +286,26 @@ const Services = () => {
 
             {/* Core Services Section */}
             <section className="relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#00111c] to-violet-300/20" />
+                <div className="absolute  inset-0 bg-gradient-to-tr from-[#00111c] to-violet-300/20" />
 
                 <div className="relative z-10  mx-auto px-6">
-                    <h1 className="text-4xl md:text-5xl text-gray-400 font-bold text-center mb-16">
-                        Our Core Services
+                    <h1 className="text-4xl md:text-5xl flex items-center justify-center text-gray-400 font-bold text-center mb-16">
+                        Our Core <span className="ml-4 w-fit text-blue-400">
+                            <RotatingText
+                                texts={['Services', 'Skills', 'Talents', 'Capabilities']}
+                                mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                                staggerFrom={"last"}
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                exit={{ y: "-120%" }}
+                                staggerDuration={0.025}
+                                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                                rotationInterval={2000}
+                            /></span>
                     </h1>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap mx-auto justify-center   container  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                         {coreServices.map((service) => (
                             <SpotlightCard
@@ -334,7 +353,7 @@ const Services = () => {
 
             {/* Infinite Scroll Showcase */}
             <section className="py-24 px-6 bg-gradient-to-br from-[#00111c] to-violet-300/20">
-                <div className="max-w-8xl mx-auto">
+                <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                         <motion.div
@@ -371,7 +390,7 @@ const Services = () => {
                             <motion.p
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.6 } }}
-                                className="text-lg text-gray-400 mb-8 leading-relaxed"
+                                className="max-w-lg text-lg text-gray-400 mb-8 leading-relaxed"
                             >
                                 Create engaging content streams with our InfiniteScroll component.
                                 Perfect for showcasing continuous content in an elegant way.
@@ -482,7 +501,7 @@ const Services = () => {
                             <motion.p
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.6 } }}
-                                className="text-lg text-gray-400 mb-8 leading-relaxed"
+                                className="max-w-lg text-lg text-gray-400 mb-8 leading-relaxed"
                             >
                                 Transform your navigation with our FlowingMenu component.
                                 Create fluid, interactive menus that respond to user movement.
@@ -536,7 +555,7 @@ const Services = () => {
                         <motion.div
                             initial={{ opacity: 0, }}
                             whileInView={{ opacity: 1, }}
-                            className="bg-black p-3 h-full mx-auto container w-full rounded-2xl shadow-2xl shadow-black"
+                            className="bg-black p-3 h-1/1 max-h-[40rem] mx-auto container w-full rounded-2xl shadow-2xl shadow-black"
                         >
                             <FlowingMenu
                                 items={[
@@ -550,6 +569,77 @@ const Services = () => {
                     </div>
                 </div>
             </section>
+
+
+            {/* Core Services Section */}
+            <section className="relative py-20">
+                <div className="absolute  inset-0 bg-gradient-to-br from-[#00111c] to-violet-300/20" />
+
+                <div className="relative z-10  mx-auto px-6">
+                    <h1 className="text-4xl md:text-5xl flex items-center justify-center text-gray-400 font-bold text-center mb-16">
+                        Our Core <span className="ml-4 w-fit text-blue-400">
+                            <RotatingText
+                                texts={['Services', 'Skills', 'Talents', 'Capabilities']}
+                                mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                                staggerFrom={"last"}
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                exit={{ y: "-120%" }}
+                                staggerDuration={0.025}
+                                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                                rotationInterval={2000}
+                            /></span>
+                    </h1>
+
+                    <div className="flex flex-wrap mx-auto justify-center   container  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        {coreServices.map((service) => (
+                            <SpotlightCard
+                                key={service.id}
+                                className="p-8 bg-black shadow-lg hover:shadow-2xl shadow-black hover:shadow-black backdrop-blur-sm rounded-2xl hover:bg-[#00111c]/90 transition-all duration-300"
+                                onMouseEnter={() => setActiveService(service.id)}
+                                onMouseLeave={() => setActiveService(null)}
+                            >
+                                <Waves
+                                    lineColor="#ffffff40"
+                                    className="-z-10"
+                                />
+                                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} flex items-center justify-center mb-6`}>
+                                    {service.icon}
+                                </div>
+
+                                <h3 className="text-2xl font-bold text-white mb-4">
+                                    {service.title}
+                                </h3>
+
+                                <p className="text-gray-400 mb-6">
+                                    {service.description}
+                                </p>
+
+                                <FadeContent
+                                    className="space-y-3"
+                                    show={activeService === service.id}
+                                >
+                                    {service.capabilities.map((capability) => (
+                                        <div
+                                            key={capability}
+                                            className="flex items-center text-gray-300"
+                                        >
+                                            <ChevronRight className="w-4 h-4 mr-2 text-purple-400" />
+                                            {capability}
+                                        </div>
+                                    ))}
+                                </FadeContent>
+                            </SpotlightCard>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
+
+
 
             {/* CTA Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
