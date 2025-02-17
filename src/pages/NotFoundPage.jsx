@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom"; // Use `next/link` if using Next.js
-import Waves from "../components/Waves"; // Import the Waves component
+import Waves from "../components/ui/Waves"; // Import the Waves component
 
 const NotFound = () => {
     return (

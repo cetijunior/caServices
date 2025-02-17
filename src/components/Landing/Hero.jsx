@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Waves from "../Waves";
+import Waves from "../ui/Waves";
 
 const Hero = () => {
     const scrollToTop = () => {
@@ -79,6 +79,9 @@ const Hero = () => {
                     Empowering businesses with cutting-edge solutions and technology-driven strategies.
                 </motion.p>
 
+
+
+                {/* CTA Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -91,7 +94,7 @@ const Hero = () => {
                         to="/services"
                         className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full overflow-hidden"
                     >
-                        <div className="absolute inset-0 w-full h-full backdrop-blur-3xl bg-gradient-to-r from-black/30 via-blue-600/30 to-white/10 transition-all duration-300" />
+                        <div className="absolute inset-0 w-full h-full bg-white/5 border border-white/10 backdrop-blur-3xl transition-all duration-300 group-hover:bg-white/10" />
                         <div className="absolute inset-0 w-full h-full backdrop-blur-3xl shadow-2xl shadow-blue-400 bg-gradient-to-br from-white/20 via-blue-600/20 to-black/30 opacity-0 group-hover:opacity-100 blur-lg transition-all duration-300" />
                         <div className="relative flex items-center justify-center text-white">
                             Explore Services
@@ -113,12 +116,16 @@ const Hero = () => {
                         className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full overflow-hidden"
                     >
                         <div className="absolute inset-0 w-full h-full bg-white/5 border border-white/10 backdrop-blur-3xl transition-all duration-300 group-hover:bg-white/10" />
-                        <div className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 blur-lg transition-all duration-300" />
-                        <span className="relative text-gray-300 group-hover:text-white transition-colors duration-300">
-                            Contact Us
-                        </span>
+                        <div className="absolute inset-0 w-full h-full backdrop-blur-3xl shadow-2xl shadow-blue-400 bg-gradient-to-br from-white/20 via-blue-600/20 to-black/30 opacity-0 group-hover:opacity-100 blur-lg transition-all duration-300" />
+                        <div className="relative flex items-center justify-center text-white">
+                            <span className="relative text-gray-300 group-hover:text-white transition-colors duration-300">
+                                Contact Us
+                            </span>
+                        </div>
                     </Link>
                 </motion.div>
+
+
             </div>
         </div>
     );

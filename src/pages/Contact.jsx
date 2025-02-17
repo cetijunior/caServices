@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle, MessageSquare, Sparkles } from "lucide-react";
-import Particles from '../components/Particles';
-import SplashCursor from '../components/SplashCursor';
+import Particles from '../components/ui/Particles';
+import SplashCursor from '../components/ui/SplashCursor';
 
 const Contact = () => {
     const [formState, setFormState] = useState({

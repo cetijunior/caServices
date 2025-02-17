@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 import {
     Globe, Database, Code, Ruler, BrainCircuit, Shield, Cloud, ChevronRight,
 } from "lucide-react";
-import TiltedCard from "../components/TiltedCard";
-import Waves from "../components/Waves";
-import FlowingMenu from "../components/FlowingMenu";
-import Particles from "../components/Particles";
-import InfiniteScroll from "../components/InfiniteScroll";
-import SpotlightCard from "../components/SpotlightCard";
-import FadeContent from "../components/FadeContent";
-import RotatingText from "../components/RotatingText";
+import TiltedCard from "../components/ui/TiltedCard";
+import Waves from "../components/ui/Waves";
+import FlowingMenu from "../components/ui/FlowingMenu";
+import Particles from "../components/ui/Particles";
+import InfiniteScroll from "../components/ui/InfiniteScroll";
+import SpotlightCard from "../components/ui/SpotlightCard";
+import FadeContent from "../components/ui/FadeContent";
+import RotatingText from "../components/ui/RotatingText";
 
 const Services = () => {
 
@@ -47,13 +47,6 @@ const Services = () => {
         "Customizable rotation amplitude",
         "Responsive design",
         "Optional overlay content"
-    ];
-
-    const dockItems = [
-        { icon: <Code size={18} />, label: "Development", onClick: () => console.log("Software Development!") },
-        { icon: <Globe size={18} />, label: "Upgrade", onClick: () => console.log("Upgrade Services!") },
-        { icon: <Database size={18} />, label: "Migration", onClick: () => console.log("Data Migration!") },
-        { icon: <Ruler size={18} />, label: "Architecture", onClick: () => console.log("Software Architecture!") },
     ];
 
 
@@ -131,12 +124,12 @@ const Services = () => {
     ];
 
     const scrollingItems = [
-        { content: "Custom Software Solutions" },
-        { content: "Scalable Cloud Systems" },
-        { content: "AI & Machine Learning" },
-        { content: "Cybersecurity & Data Protection" },
-        { content: "E-commerce Solutions" },
-        { content: "Blockchain & Web3 Development" },
+        { content: "Custom Software Solutions ✅" },
+        { content: "Scalable Cloud Systems ✅" },
+        { content: "AI & Machine Learning ✅" },
+        { content: "Cybersecurity & Data Protection ✅" },
+        { content: "E-commerce Solutions ✅" },
+        { content: "Blockchain & Web3 Development ✅" },
     ];
 
     return (
@@ -174,7 +167,7 @@ const Services = () => {
 
 
             {/* TiltedCard Showcase */}
-            <section className="lg:py-12  lg:px-6 bg-gradient-to-br from-[#00111c] to-violet-300/20">
+            <section className="lg:py-12 lg:pb-0 pb-20 p-8 lg:px-6 bg-gradient-to-br from-[#00111c] to-violet-300/20">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <motion.div
@@ -292,7 +285,7 @@ const Services = () => {
                     <h1 className="text-4xl md:text-5xl flex items-center justify-center text-gray-400 font-bold text-center mb-16">
                         Our Core <span className="ml-4 w-fit text-blue-400">
                             <RotatingText
-                                texts={['Services', 'Skills', 'Talents', 'Capabilities']}
+                                texts={['Services', 'Skills', 'Talents']}
                                 mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                                 staggerFrom={"last"}
                                 initial={{ y: "100%" }}
@@ -452,7 +445,7 @@ const Services = () => {
                                     isTilted={true}
                                     tiltDirection="left"
                                     autoplay={true}
-                                    autoplaySpeed={0.1}
+                                    autoplaySpeed={1}
                                     autoplayDirection="down"
                                     pauseOnHover={true}
                                 />
@@ -579,7 +572,7 @@ const Services = () => {
                     <h1 className="text-4xl md:text-5xl flex items-center justify-center text-gray-400 font-bold text-center mb-16">
                         Our Core <span className="ml-4 w-fit text-blue-400">
                             <RotatingText
-                                texts={['Services', 'Skills', 'Talents', 'Capabilities']}
+                                texts={['Services', 'Skills', 'Talents']}
                                 mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                                 staggerFrom={"last"}
                                 initial={{ y: "100%" }}

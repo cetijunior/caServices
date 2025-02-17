@@ -5,7 +5,12 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins:
-    [tailwindcss(),
-    react(),
-    ]
+    [tailwindcss(), react(),],
+  assetsInclude: ['**/*.glb'],
+  resolve: {
+    alias: {
+      'react': 'react',
+      'react-dom': 'react-dom'
+    }
+  }
 })

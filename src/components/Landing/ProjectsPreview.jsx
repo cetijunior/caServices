@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Clock } from "lucide-react";
-import TiltedCard from "../TiltedCard"; // Import the TiltedCard component
+import TiltedCard from "../ui/TiltedCard"; // Import the TiltedCard component
 
 const projects = [
     {

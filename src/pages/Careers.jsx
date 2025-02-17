@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Search, MapPin, Clock, Briefcase, Filter, Mail, Workflow, PlusSquare, ArrowUpFromLine } from "lucide-react";
 import careersData from "../data/careersData";
-import Particles from "../components/Particles";
+import Particles from "../components/ui/Particles";
 
 const Careers = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -18,7 +18,7 @@ const Careers = () => {
     });
 
     return (
-        <div className="pt-16 bg-gradient-to-b from-black to-gray-900 text-white">
+        <div className="bg-gradient-to-b from-black to-gray-900 text-white">
             {/* Hero Section */}
             <section className="relative overflow-hidden">
 
@@ -28,7 +28,7 @@ const Careers = () => {
 
 
                 </div>
-                <div className="h-full flex justify-center items-center self-center align-middle  relative max-w-6xl mx-auto px-6 py-44 text-center">
+                <div className="h-screen flex justify-center items-center self-center align-middle  relative max-w-6xl mx-auto px-6 py-44 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}

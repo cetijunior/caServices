@@ -16,10 +16,10 @@ import {
     Globe2,
     Apple,
 } from "lucide-react";
-import SpotlightCard from "../SpotlightCard"; // Interactive cards
-import Waves from "../Waves";
-import RotatingText from "../RotatingText"
-//Leave thus 
+import SpotlightCard from "../ui/SpotlightCard";
+import Waves from "../ui/Waves";
+import RotatingText from "../ui/RotatingText"
+
 const services = [
     {
         title: "Software Development",
@@ -38,6 +38,7 @@ const services = [
     }
 ];
 
+// Duplicate tech stack for seamless loop
 const techStack = [
     { name: "Java", icon: <Coffee className="w-12 h-12 text-yellow-400" /> },
     { name: "Python", icon: <Cpu className="w-12 h-12 text-green-400" /> },
@@ -51,10 +52,61 @@ const techStack = [
     { name: "GraphQL", icon: <Globe2 className="w-12 h-12 text-pink-400" /> },
 ];
 
+const LogoWall = () => {
+    return (
+        <div className="relative flex overflow-hidden">
+            <motion.div
+                className="flex gap-8 py-4"
+                animate={{
+                    x: ["0%", "-50%"]
+                }}
+                transition={{
+                    duration: 20,
+                    ease: "linear",
+                    repeat: Infinity,
+                }}
+            >
+                {/* First set of logos */}
+                {techStack.map((tech, index) => (
+                    <div
+                        key={`first-${index}`}
+                        className="flex flex-col items-center p-6 rounded-2xl bg-gradient-to-b from-gray-900/50 to-gray-900/20 border border-gray-800/50 transition-all duration-300 group min-w-[160px]"
+                    >
+                        <div className="mb-4 p-3 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                            {tech.icon}
+                        </div>
+                        <span className="text-lg font-medium text-gray-300 group-hover:text-white transition-all">
+                            <span className="group-hover:text-cyan-500">
+                                {tech.name}
+                            </span>
+                        </span>
+                    </div>
+                ))}
+
+                {/* Duplicated set for seamless loop */}
+                {techStack.map((tech, index) => (
+                    <div
+                        key={`second-${index}`}
+                        className="flex flex-col items-center p-6 rounded-2xl bg-gradient-to-b from-gray-900/50 to-gray-900/20 border border-gray-800/50 transition-all duration-300 group min-w-[160px]"
+                    >
+                        <div className="mb-4 p-3 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                            {tech.icon}
+                        </div>
+                        <span className="text-lg font-medium text-gray-300 group-hover:text-white transition-all">
+                            <span className="group-hover:text-cyan-500">
+                                {tech.name}
+                            </span>
+                        </span>
+                    </div>
+                ))}
+            </motion.div>
+        </div>
+    );
+};
+
 const ServicesAndTechStack = () => {
     return (
         <>
-            {/* 🚀 Services Section */}
             <section className="relative bg-black py-24 px-4 overflow-hidden">
                 <div className="max-w-6xl mx-auto">
                     <motion.h2
@@ -63,11 +115,11 @@ const ServicesAndTechStack = () => {
                         transition={{ duration: 0.6 }}
                         className="md:text-5xl text-3xl font-bold text-white text-center mb-16"
                     >
-                        <div className="flex items-center justify-center ">
+                        <div className="flex items-center justify-center">
                             Our Premium
                             <span className="ml-4 text-blue-400">
                                 <RotatingText
-                                    texts={['Services', 'Skills', 'Talents', 'Capabilities']}
+                                    texts={['Services', 'Skills', 'Talents']}
                                     mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                                     staggerFrom={"last"}
                                     initial={{ y: "100%" }}
@@ -77,10 +129,9 @@ const ServicesAndTechStack = () => {
                                     splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
                                     transition={{ type: "spring", damping: 30, stiffness: 400 }}
                                     rotationInterval={2000}
-                                /></span>
+                                />
+                            </span>
                         </div>
-
-
                     </motion.h2>
 
                     <div className="grid md:grid-cols-3 gap-12">
@@ -92,7 +143,6 @@ const ServicesAndTechStack = () => {
                                     transition={{ duration: 0.5, delay: index * 0.2 }}
                                     className="flex flex-col items-start"
                                 >
-
                                     <Waves
                                         lineColor="#ffffff30"
                                         className="-z-10"
@@ -120,7 +170,6 @@ const ServicesAndTechStack = () => {
                 </div>
             </section>
 
-            {/* 🌟 Technology Stack Section */}
             <section className="relative bg-black py-24 px-4">
                 <div className="max-w-6xl mx-auto">
                     <motion.div
@@ -137,32 +186,7 @@ const ServicesAndTechStack = () => {
                         </h1>
                     </motion.div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
-                        {techStack.map((tech, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                whileHover={{ y: -15, scale: 1.1, }}
-                                transition={{ duration: 0.1 }}
-                                className="flex flex-col items-center p-6 rounded-2xl bg-gradient-to-b from-gray-900/50 to-gray-900/20 border border-gray-800/50 hover:border-blue-500/50 transition-all duration-300 group hover:shadow-2xl hover:shadow-blue-500/10"
-                            >
-                                <div className="mb-4 p-3 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                                    {tech.icon}
-                                </div>
-                                <motion.span
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    transition={{ duration: 0.5, delay: 0.3 }}
-                                    className="text-lg font-medium text-gray-300 group-hover:text-white transition-all"
-                                >
-                                    <span className="group-hover:text-cyan-500">
-                                        {tech.name}
-                                    </span>
-                                </motion.span>
-                            </motion.div>
-                        ))}
-                    </div>
+                    <LogoWall />
                 </div>
             </section>
         </>

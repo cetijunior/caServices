@@ -1,42 +1,13 @@
 import React from "react";
-import TiltedCard from '../components/TiltedCard';
+import { projects } from "../data/projectsData";
+import TiltedCard from "../components/ui/TiltedCard";
+import { useNavigate } from "react-router-dom";
 
-const projects = [
-    {
-        title: "POK",
-        image: "/assets/images/pok.svg",
-        year: "2022",
-        tags: ["Fintech", "UI/UX Design", "Web Dev"],
-        description: "Revolutionary fintech solution transforming digital payments",
-        bgColor: "bg-gradient-to-br from-blue-900 to-black"
-    },
-    {
-        title: "SMIP",
-        image: "/assets/images/smip.svg",
-        year: "2022",
-        tags: ["App Dev", "Web Dev"],
-        description: "Next-generation educational platform",
-        bgColor: "bg-gradient-to-br from-teal-400 to-teal-900"
-    },
-    {
-        title: "ONE",
-        image: "/assets/images/one.svg",
-        year: "2022",
-        tags: ["App Dev", "Web Dev"],
-        description: "Unified digital experience platform",
-        bgColor: "bg-gradient-to-br from-purple-900 to-black"
-    },
-    {
-        title: "KESH",
-        image: "/assets/images/kesh.svg",
-        year: "2022",
-        tags: ["App Dev", "Web Dev"],
-        description: "Advanced payment processing system",
-        bgColor: "bg-gradient-to-br from-zinc-800 to-black"
-    }
-];
+
 
 const Projects = () => {
+    const navigate = useNavigate();
+
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -46,7 +17,7 @@ const Projects = () => {
     };
 
     return (
-        <div className="bg-black text-white">
+        <div className="bg-black container mx-auto text-white">
             {/* Hero Section */}
             <div className="relative py-20 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4">
@@ -79,7 +50,8 @@ const Projects = () => {
 
                                 displayOverlayContent={true}
                                 overlayContent={
-                                    <div onClick={scrollToTop} className={`w-full h-full cursor-pointer shadow-2xl shadow-${project.bgColor} flex flex-col justify-between p-8 ${project.bgColor} bg-opacity-80 backdrop-blur-sm`}>
+                                    <div onClick={() => navigate(`/projects/${encodeURIComponent(project.title)}`, { state: project })}
+                                        className={`w-full h-full cursor-pointer shadow-2xl shadow-${project.bgColor} flex flex-col justify-between p-8 ${project.bgColor} bg-opacity-80 backdrop-blur-sm`}>
                                         {/* Top Section */}
                                         <div className="flex justify-between items-start">
                                             <span className="px-4 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">

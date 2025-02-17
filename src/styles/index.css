@@ -42,3 +42,51 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
 }
+
+
+
+
+
+
+.glassmorphism-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.glassmorphism-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 255, 0.2);
+}
+
+.metric-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.metric-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 18px rgba(0, 255, 255, 0.2);
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #A855F7, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-text {
+  color: #A1A1AA;
+  font-size: 1rem;
+  line-height: 1.6;
+}
