@@ -115,12 +115,12 @@ const ServicesAndTechStack = () => {
                         transition={{ duration: 0.6 }}
                         className="md:text-5xl text-3xl font-bold text-white text-center mb-16"
                     >
-                        <div className="flex items-center justify-center">
+                        <div className="flex items-center justify-evenly w-full ">
                             Our Premium
                             <span className="ml-4 text-blue-400">
                                 <RotatingText
                                     texts={['Services', 'Skills', 'Talents']}
-                                    mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                                    mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg transition-all duration-300"
                                     staggerFrom={"last"}
                                     initial={{ y: "100%" }}
                                     animate={{ y: 0 }}
@@ -137,11 +137,11 @@ const ServicesAndTechStack = () => {
                     <div className="grid md:grid-cols-3 gap-12">
                         {services.map((service, index) => (
                             <SpotlightCard key={index} className="p-8 bg-gray-900/50 rounded-2xl backdrop-blur-md group transition-all duration-75 hover:bg-gray-800/50">
+
                                 <Waves
                                     lineColor="#ffffff30"
                                     className="-z-10"
                                 />
-
 
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
@@ -159,6 +159,7 @@ const ServicesAndTechStack = () => {
                                         {service.description}
                                     </p>
                                     <motion.div
+                                        // onClick={ }
                                         className="flex items-center text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
                                         whileHover={{ x: 5 }}
                                     >

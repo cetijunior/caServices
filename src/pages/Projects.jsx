@@ -24,7 +24,7 @@ const Projects = () => {
     return (
         <div className="container mx-auto text-white">
             {/* Hero Section */}
-            <div className="relative py-10 pt-16 overflow-hidden">
+            <div className="relative py-10 lg:pb-10 pb-20 pt-16 overflow-hidden">
                 <div className="max-w-7xl lg:pb-16 mx-auto px-4">
                     <h1 className="text-5xl md:text-7xl font-bold text-center mb-4">
                         Our Projects
@@ -38,8 +38,8 @@ const Projects = () => {
             {/* Projects Grid */}
             <section className="max-w-7xl lg:pt-0 pt-24 mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2   gap-16">
-                    {projects.map((project, index) => (
-                        <div key={index} className="flex -my-16 lg:-my-20 justify-center md:p-0 ">
+                    {projects.map((project, id) => (
+                        <div key={id} className="flex -my-16 lg:scale-100 scale-90 lg:-my-20 justify-center md:p-0 ">
                             <TiltedCard
                                 imageSrc={project.image2}
                                 altText={project.title}
@@ -58,7 +58,7 @@ const Projects = () => {
                                         initial={{ opacity: 0, y: 10 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.4, ease: "easeOut" }}
-                                        className={`w-full h-full lg:mt-0 -mt-16  group group-hover max-w-md bg-gradient-to-br shadow-2xl shadow-${project.bgColor}  bg-${project.bgColor} backdrop-blur-md p-6 rounded-lg flex flex-col justify-end`}
+                                        className={`w-full h-full lg:mt-0 -mt-28 group group-hover max-w-md bg-gradient-to-br shadow-2xl shadow-${project.bgColor}  bg-${project.bgColor} backdrop-blur-md p-6 rounded-lg flex flex-col justify-end`}
                                     >
                                         {/* Tags */}
                                         <div className="flex w-full gap-2 mb-3">
