@@ -64,7 +64,9 @@ const Hero = () => {
                     className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white leading-tight"
                 >
                     MAKE YOUR{" "}
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600/70 via-white/60 to-blue-600/60">
+                    <span
+                        className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600/70 via-white/60 to-blue-600/60"
+                    >
                         DIGITAL DREAMS
                     </span>{" "}
                     A REALITY

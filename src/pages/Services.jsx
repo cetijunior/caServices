@@ -167,7 +167,7 @@ const Services = () => {
 
 
             {/* TiltedCard Showcase */}
-            <section className="lg:py-12 lg:pb-0 pb-20 p-8 lg:px-6 bg-gradient-to-br from-[#00111c] to-violet-300/20">
+            <section className="lg:py-12  pb-20 p-8 lg:px-6 bg-gradient-to-br from-[#00111c] to-violet-300/20">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <motion.div
@@ -245,7 +245,7 @@ const Services = () => {
                         <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="w-full mx-auto container group lg:mt-0 rounded-2xl bg-gradient-to-br shadow-2xl from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50 relative overflow-hidden"
+                            className="w-full mx-auto scale-90 container group lg:mt-0 rounded-2xl bg-gradient-to-br shadow-2xl from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50 relative overflow-hidden"
                         >
                             {/* Glossy Overlay */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-20 pointer-events-none" />

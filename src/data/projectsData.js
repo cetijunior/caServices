@@ -1,142 +1,147 @@
 export const projects = [
     {
-        id: "pok",
-        title: "POK",
-        image: "/assets/images/pok.svg",
-        year: "2022",
-        tags: ["Fintech", "UI/UX Design", "Web Dev"],
-        description: "Revolutionary fintech solution transforming digital payments",
-        bgColor: "bg-gradient-to-br from-blue-900 to-black",
-        fullDescription: `POK is a groundbreaking fintech platform that revolutionizes how digital payments are processed and managed. The solution combines cutting-edge security features with an intuitive user interface to deliver a seamless payment experience.`,
-        challenge: "Traditional payment systems often struggle with complex integration requirements, slow processing times, and poor user experience. Our challenge was to create a solution that addresses these pain points while maintaining the highest security standards.",
-        solution: "We developed a modular architecture that allows for easy integration with existing systems while providing real-time payment processing capabilities. The system utilizes advanced encryption and blockchain technology to ensure secure transactions.",
+        id: "garage-mt",
+        title: "Garage MT",
+        image: "/assets/projects/GMTPhone.png",
+        image2: "/assets/projects/GMTLaptop.png",
+        year: "2024",
+        tags: ["Auto Services", "Web Dev", "Business"],
+        description: "A modern and efficient garage management system designed for Malta.",
+        bgColor: "bg-gradient-to-br from-red-800 to-black",
+        fullDescription: `Garage MT is a state-of-the-art garage website tailored for the Maltese market. It simplifies the booking process, enhances customer experience, and helps garage owners manage operations seamlessly.`,
+        challenge: "Many garages in Malta struggle with outdated booking systems, making it difficult for customers to schedule services efficiently.",
+        solution: "We developed a sleek, responsive website with real-time booking, service descriptions, and customer management tools, ensuring a seamless experience for both clients and business owners.",
         features: [
-            "Real-time payment processing",
-            "Multi-currency support",
-            "Advanced fraud detection",
-            "Automated reconciliation",
-            "Interactive dashboard",
-            "API-first architecture"
+            "Online appointment booking",
+            "Automated reminders",
+            "Service price estimation",
+            "User-friendly dashboard",
+            "SEO-optimized pages",
+            "Mobile-responsive design"
         ],
         techStack: {
-            frontend: ["React", "TypeScript", "Tailwind CSS"],
-            backend: ["Node.js", "Express", "PostgreSQL"],
-            infrastructure: ["AWS", "Docker", "Kubernetes"]
+            frontend: ["React", "Tailwind CSS", "Framer Motion"],
+            backend: ["Node.js", "Express", "MongoDB"],
+            infrastructure: ["Vercel", "Cloudflare", "Docker"]
         },
         metrics: {
-            processedTransactions: "1M+",
-            averageResponseTime: "0.3s",
-            uptime: "99.99%",
-            userSatisfaction: "4.8/5"
+            activeUsers: "5K+",
+            bookingsProcessed: "10K+",
+            customerSatisfaction: "4.9/5",
+            averageLoadTime: "1.2s"
         },
         links: {
-            live: "https://pok.example.com",
-            documentation: "https://docs.pok.example.com"
+            live: "https://garage-mt.vercel.app/",
+            documentation: "https://garage-mt.vercel.app/docs"
         }
     },
     {
-        id: "smip",
-        title: "SMIP",
-        image: "/assets/images/smip.svg",
-        year: "2022",
-        tags: ["App Dev", "Web Dev"],
-        description: "Next-generation educational platform",
-        bgColor: "bg-gradient-to-br from-teal-400 to-teal-900",
-        fullDescription: `SMIP is an innovative educational platform that bridges the gap between traditional learning and modern digital experiences. It provides a comprehensive suite of tools for educators and students to facilitate engaging, interactive learning experiences.`,
-        challenge: "Educational institutions needed a flexible, scalable platform that could support both in-person and remote learning while providing robust analytics and progress tracking.",
-        solution: "We created a hybrid platform that seamlessly integrates various learning modalities with powerful analytics tools. The platform adapts to different learning styles and provides real-time feedback to both educators and students.",
+        id: "bf-netzbau",
+        title: "BF-Netzbau",
+        image: "/assets/projects/BFNPhone.png",
+        image2: "/assets/projects/BFNLaptop.png",
+        year: "2023",
+        tags: ["Telecom", "Infrastructure", "Web Dev"],
+        description: "High-speed internet infrastructure solutions for residential and commercial properties.",
+        bgColor: "bg-gradient-to-br from-yellow-500 to-black",
+        fullDescription: `BF-Netzbau provides cutting-edge internet solutions, ensuring high-speed connectivity for homes and businesses. Their tailored solutions improve efficiency and reliability for modern digital needs.`,
+        challenge: "Slow and unreliable internet infrastructure was a major concern for users and businesses in the region.",
+        solution: "We created a robust business website that highlights BF-Netzbau’s services, making it easy for customers to understand packages, request installations, and contact support.",
         features: [
-            "Interactive learning modules",
-            "Real-time collaboration tools",
-            "Progress tracking dashboard",
-            "Custom curriculum builder",
-            "Integrated assessment tools",
-            "Mobile-first design"
+            "Custom plan selection",
+            "Installation booking system",
+            "Service area coverage map",
+            "Customer testimonials",
+            "Live chat support",
+            "SEO-optimized content"
         ],
         techStack: {
-            frontend: ["React Native", "Next.js", "Material-UI"],
-            backend: ["Python", "Django", "MongoDB"],
-            infrastructure: ["GCP", "Firebase", "CloudFront"]
+            frontend: ["Next.js", "Tailwind CSS", "GSAP"],
+            backend: ["Node.js", "PostgreSQL"],
+            infrastructure: ["AWS", "Docker", "Cloudflare"]
         },
         metrics: {
-            activeUsers: "50K+",
-            coursesCreated: "1000+",
-            studentEngagement: "89%",
-            teacherSatisfaction: "4.9/5"
+            installationsCompleted: "1K+",
+            websiteTraffic: "50K+ monthly visitors",
+            customerSatisfaction: "4.8/5",
+            averageLoadTime: "1.0s"
         },
         links: {
-            live: "https://smip.example.com",
-            documentation: "https://docs.smip.example.com"
+            live: "https://bf-netzbau.vercel.app/",
+            documentation: "https://bf-netzbau.vercel.app/docs"
         }
     },
     {
-        id: "one",
-        title: "ONE",
-        image: "/assets/images/one.svg",
-        year: "2022",
-        tags: ["App Dev", "Web Dev"],
-        description: "Unified digital experience platform",
-        bgColor: "bg-gradient-to-br from-purple-900 to-black",
-        fullDescription: `ONE is a comprehensive digital experience platform that unifies various digital touchpoints into a cohesive, seamless experience. It enables organizations to create, manage, and optimize digital experiences across multiple channels and devices.`,
-        challenge: "Organizations struggled with fragmented digital experiences across different platforms and devices, leading to inconsistent brand messaging and poor user engagement.",
-        solution: "We developed a unified platform that centralizes content management, user experience design, and analytics while maintaining flexibility for different channels and use cases.",
+        id: "bf-wartungsservices",
+        title: "BF-Wartungsservices",
+        image: "/assets/projects/BFWPhone.png",
+        image2: "/assets/projects/BFWLaptop.png",
+        year: "2023",
+        tags: ["Maintenance", "Home Services", "Business"],
+        description: "Reliable maintenance services for residential and commercial properties.",
+        bgColor: "bg-gradient-to-br from-green-500 to-black",
+        fullDescription: `BF-Wartungsservices provides top-quality property maintenance, ensuring that businesses and homeowners receive expert repairs, installations, and servicing at any time of the day.`,
+        challenge: "Customers needed a seamless way to book maintenance services without long waiting times and inconsistent availability.",
+        solution: "We developed a user-friendly website with a service catalog, easy scheduling, and a maintenance subscription model for regular upkeep.",
         features: [
-            "Omnichannel content management",
-            "Personalization engine",
-            "A/B testing capabilities",
-            "Analytics dashboard",
-            "Automated workflow tools",
-            "Multi-site management"
+            "24/7 emergency support",
+            "Online service booking",
+            "Custom maintenance packages",
+            "Live customer chat",
+            "Detailed service descriptions",
+            "Mobile-friendly interface"
         ],
         techStack: {
-            frontend: ["Vue.js", "Nuxt.js", "TailwindCSS"],
-            backend: ["Java", "Spring Boot", "Elasticsearch"],
-            infrastructure: ["Azure", "Redis", "Nginx"]
+            frontend: ["React", "Tailwind CSS", "Framer Motion"],
+            backend: ["Django", "PostgreSQL"],
+            infrastructure: ["GCP", "Docker", "Firebase"]
         },
         metrics: {
-            deployedSites: "500+",
-            totalPageViews: "10M+",
-            averageLoadTime: "0.8s",
-            customerRetention: "95%"
+            serviceRequestsHandled: "2K+",
+            "recurring customers": "75%",
+            customerSatisfaction: "4.7/5",
+            "response time": "<30 minutes"
         },
         links: {
-            live: "https://one.example.com",
-            documentation: "https://docs.one.example.com"
+            live: "https://bf-wartungsservices.vercel.app/",
+            documentation: "https://bf-wartungsservices.vercel.app/docs"
         }
     },
     {
-        id: "kesh",
-        title: "KESH",
-        image: "/assets/images/kesh.svg",
-        year: "2022",
-        tags: ["App Dev", "Web Dev"],
-        description: "Advanced payment processing system",
-        bgColor: "bg-gradient-to-br from-zinc-800 to-black",
-        fullDescription: `KESH is a sophisticated payment processing system designed for enterprise-level transactions. It combines robust security features with advanced processing capabilities to handle complex payment scenarios at scale.`,
-        challenge: "Enterprise organizations needed a reliable, scalable payment processing system that could handle complex payment flows while maintaining compliance with international regulations.",
-        solution: "We built a highly scalable payment processing system with built-in compliance checks, automated reconciliation, and support for multiple payment methods and currencies.",
+        id: "zgjidhje-ai",
+        title: "Zgjidhje AI",
+        image: "/assets/projects/ZAPhone.png",
+        image2: "/assets/projects/ZALaptop.png",
+        year: "2024",
+        tags: ["AI", "Education", "Web Dev"],
+        description: "AI-powered platform for students, offering tutoring, study tools, and interactive learning.",
+        bgColor: "bg-gradient-to-br from-purple-600 to-black",
+        lineColor: "purple-600",
+        fullDescription: `Zgjidhje AI is an advanced learning assistant built by students for students. It provides AI-driven tutoring, personalized study plans, and real-time academic assistance, revolutionizing the way students learn.`,
+        challenge: "Students often struggle with understanding complex subjects due to lack of accessible and affordable tutoring.",
+        solution: "We developed an AI-powered platform that offers personalized learning paths, real-time tutoring, and a knowledge-sharing community for students.",
         features: [
-            "Multi-currency support",
-            "Automated compliance checks",
-            "Real-time transaction monitoring",
-            "Customizable payment flows",
-            "Advanced reporting tools",
-            "Global payment gateway integration"
+            "AI-driven tutoring",
+            "Personalized study plans",
+            "Interactive quizzes",
+            "Collaborative learning tools",
+            "Live chat with mentors",
+            "Mobile-friendly design"
         ],
         techStack: {
-            frontend: ["Angular", "RxJS", "SCSS"],
-            backend: ["Go", "gRPC", "PostgreSQL"],
-            infrastructure: ["AWS", "Terraform", "EKS"]
+            frontend: ["Next.js", "Chakra UI", "Framer Motion"],
+            backend: ["FastAPI", "MongoDB", "OpenAI API"],
+            infrastructure: ["Azure", "Redis", "Cloudflare"]
         },
         metrics: {
-            transactionVolume: "$5B+",
-            successRate: "99.99%",
-            averageProcessingTime: "0.5s",
-            complianceScore: "100%"
+            activeUsers: "10K+",
+            "tutoring sessions completed": "50K+",
+            "knowledge base size": "100K+ resources",
+            "student satisfaction": "4.9/5"
         },
         links: {
-            live: "https://kesh.example.com",
-            documentation: "https://docs.kesh.example.com"
+            live: "https://zgjidhje-ai-web.vercel.app/",
+            documentation: "https://zgjidhje-ai-web.vercel.app/docs"
         }
     }
 ];

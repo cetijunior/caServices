@@ -15,6 +15,9 @@ const Contact = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [activeField, setActiveField] = useState(null);
 
+    const [isTyping, setIsTyping] = useState(false);
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -46,9 +49,14 @@ const Contact = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-black to-gray-950 overflow-hidden relative">
+        <div className="min-h-screen bg-gradient-to-b from-black to-gray-950 overflow-hidden relative"
+            onFocus={() => setIsTyping(true)} // Disable cursor effect when input is focused
+            onBlur={() => setIsTyping(false)}
+        >
+
+
             {/* Splash Cursor */}
-            <SplashCursor />
+            {!isTyping && <SplashCursor />} {/* Disable SplashCursor when typing */}
 
             {/* Particles Background */}
             <div className="absolute inset-0 -z-10">

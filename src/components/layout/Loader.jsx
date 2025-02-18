@@ -20,9 +20,9 @@ const Loader = ({ onFinish }) => {
                     key="loader"
                     initial={{ opacity: 1, scale: 1 }}
                     animate={{ opacity: 0, scale: 1.1 }}
-                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                    transition={{ duration: 2, ease: "easeInOut" }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 flex items-center justify-center w-full h-full bg-black z-[999]"
+                    className="fixed inset-0 flex flex-col items-center justify-center w-full h-full bg-black z-[999] transition-all duration-150"
                 >
                     {/* Rotating Logo */}
                     <motion.img
@@ -33,6 +33,10 @@ const Loader = ({ onFinish }) => {
                         transition={{ duration: 1.5, ease: "easeInOut" }}
                         className="w-24 h-24 opacity-80"
                     />
+                    <h1
+                        className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600/70 via-white/60 to-blue-600/60 font-bold text-5xl md:text-6xl ml-4"                    >
+                        CA SERVICES
+                    </h1>
                 </motion.div>
             )}
         </AnimatePresence>
