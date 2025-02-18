@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Search, MapPin, Clock, Briefcase, Filter, Mail, Workflow, PlusSquare, ArrowUpFromLine } from "lucide-react";
+import {
+    ArrowRight,
+    Search,
+    MapPin,
+    Clock,
+    Briefcase,
+    Filter,
+    Mail,
+    Workflow,
+    PlusSquare,
+    ArrowUpFromLine
+} from "lucide-react";
 import careersData from "../data/careersData";
 import Particles from "../components/ui/Particles";
 
@@ -21,14 +32,11 @@ const Careers = () => {
         <div className="bg-gradient-to-b from-black to-gray-900 text-white">
             {/* Hero Section */}
             <section className="relative overflow-hidden">
-
                 <div className="absolute inset-0">
-
                     <Particles />
-
-
                 </div>
-                <div className="h-screen flex justify-center items-center self-center align-middle  relative max-w-6xl mx-auto px-6 py-44 text-center">
+
+                <div className="h-screen flex justify-center items-center text-center relative max-w-6xl mx-auto px-6 py-44">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -39,7 +47,7 @@ const Careers = () => {
                         </h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
                             Be part of something extraordinary. We're looking for talented individuals
-                            who are passionate about innovation and making a difference.
+                            passionate about innovation and making a difference.
                         </p>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
@@ -106,36 +114,62 @@ const Careers = () => {
                             >
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                                     <div className="space-y-3">
-                                        <h2 className="text-2xl font-semibold group-hover:text-blue-400 transition-colors">
-                                            {job.title}
-                                        </h2>
-                                        <div className="flex flex-wrap gap-4 text-sm text-gray-400">
-                                            <div className="flex items-center gap-1">
-                                                <MapPin className="h-4 w-4" />
-                                                {job.location}
+                                        <div className="flex items-center justify-between">
+                                            <div>
+
+                                                <h2 className="text-2xl font-semibold group-hover:text-blue-400 transition-colors">
+                                                    {job.title}
+                                                </h2>
+                                                <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+                                                    <div className="flex items-center gap-1">
+                                                        <MapPin className="h-4 w-4" />
+                                                        {job.location}
+                                                    </div>
+                                                    <div className="flex items-center gap-1">
+                                                        <Briefcase className="h-4 w-4" />
+                                                        {job.type}
+                                                    </div>
+                                                    <div className="flex items-center gap-1">
+                                                        <Clock className="h-4 w-4" />
+                                                        {job.applyBy || "Open until filled"}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="flex items-center gap-1">
-                                                <Briefcase className="h-4 w-4" />
-                                                {job.type}
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <Clock className="h-4 w-4" />
-                                                {job.applyBy || "Open until filled"}
+
+                                            <div className="flex items-center gap-4">
+                                                <a
+                                                    href={`mailto:bsncetijunior@gmail.com?subject=Application for ${job.title}`}
+                                                    className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+                                                >
+                                                    <Mail className="h-5 w-5" />
+                                                    Apply Now
+                                                </a>
                                             </div>
                                         </div>
+
                                         {job.description && (
                                             <p className="text-gray-400">{job.description}</p>
                                         )}
+
+                                        <div>
+                                            Requirements:
+                                            {job.requirements && (
+                                                <p className="text-gray-400">{job.requirements}</p>
+                                            )}
+                                        </div>
+
+                                        <div>
+                                            Responsibilities:
+                                            {job.responsibilities && (
+                                                <p className="text-gray-400">{job.responsibilities}</p>
+                                            )}
+                                        </div>
+
+
+
                                     </div>
-                                    <div className="flex items-center gap-4">
-                                        <a
-                                            href={`mailto:bsncetijunior@gmail.com?subject=Application for ${job.title}`}
-                                            className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
-                                        >
-                                            <Mail className="h-5 w-5" />
-                                            Apply Now
-                                        </a>
-                                    </div>
+
+
                                 </div>
                             </motion.div>
                         ))
@@ -155,21 +189,9 @@ const Careers = () => {
                 </motion.h2>
                 <div className="grid md:grid-cols-3 gap-8">
                     {[
-                        {
-                            icon: Workflow,
-                            title: "Growth & Development",
-                            description: "Continuous learning opportunities and career advancement paths"
-                        },
-                        {
-                            icon: PlusSquare,
-                            title: "Work-Life Balance",
-                            description: "Flexible working hours and remote work options"
-                        },
-                        {
-                            icon: ArrowUpFromLine,
-                            title: "Competitive Benefits",
-                            description: "Comprehensive healthcare, retirement plans, and more"
-                        }
+                        { icon: Workflow, title: "Growth & Development", description: "Continuous learning opportunities and career advancement paths" },
+                        { icon: PlusSquare, title: "Work-Life Balance", description: "Flexible working hours and remote work options" },
+                        { icon: ArrowUpFromLine, title: "Competitive Benefits", description: "Comprehensive healthcare, retirement plans, and more" }
                     ].map((benefit, index) => (
                         <motion.div
                             key={index}
@@ -179,9 +201,7 @@ const Careers = () => {
                             transition={{ delay: index * 0.2 }}
                             className="p-6 rounded-xl hover:border hover:border-cyan-600 transition-all duration-300 hover:scale-105 bg-gray-900/50 border border-gray-800"
                         >
-                            <div className="p-3 bg-blue-500/10 rounded-lg w-fit mb-4">
-                                <benefit.icon className="h-8 w-8 text-blue-400" />
-                            </div>
+                            <benefit.icon className="h-8 w-8 text-blue-400" />
                             <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
                             <p className="text-gray-400">{benefit.description}</p>
                         </motion.div>

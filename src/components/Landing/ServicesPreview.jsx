@@ -136,18 +136,19 @@ const ServicesAndTechStack = () => {
 
                     <div className="grid md:grid-cols-3 gap-12">
                         {services.map((service, index) => (
-                            <SpotlightCard key={index} className="p-8 bg-gray-900/50 rounded-2xl backdrop-blur-md group transition-all duration-300 hover:bg-gray-800/50">
+                            <SpotlightCard key={index} className="p-8 bg-gray-900/50 rounded-2xl backdrop-blur-md group transition-all duration-75 hover:bg-gray-800/50">
+                                <Waves
+                                    lineColor="#ffffff30"
+                                    className="-z-10"
+                                />
+
+
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: index * 0.2 }}
-                                    className="flex flex-col items-start"
+                                    className="flex flex-col justify-between h-full items-start"
                                 >
-                                    <Waves
-                                        lineColor="#ffffff30"
-                                        className="-z-10"
-                                    />
-
                                     <div className="mb-6 p-4 rounded-xl bg-blue-500/10">
                                         {service.icon}
                                     </div>
@@ -170,8 +171,8 @@ const ServicesAndTechStack = () => {
                 </div>
             </section>
 
-            <section className="relative bg-black py-24 px-4">
-                <div className="max-w-6xl mx-auto">
+            <section className="relative bg-black py-24 ">
+                <div className="mx-auto cursor-default">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

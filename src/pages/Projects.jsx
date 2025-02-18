@@ -4,6 +4,7 @@ import TiltedCard from "../components/ui/TiltedCard";
 import { useNavigate } from "react-router-dom";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import Particles from "../components/ui/Particles";
 
 
 const Projects = () => {
@@ -21,10 +22,10 @@ const Projects = () => {
         }, 100);
     };
     return (
-        <div className="bg-black container mx-auto text-white">
+        <div className="container mx-auto text-white">
             {/* Hero Section */}
-            <div className="relative py-20 mb-10 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4">
+            <div className="relative py-10 pt-16 overflow-hidden">
+                <div className="max-w-7xl lg:pb-16 mx-auto px-4">
                     <h1 className="text-5xl md:text-7xl font-bold text-center mb-4">
                         Our Projects
                     </h1>
@@ -35,10 +36,10 @@ const Projects = () => {
             </div>
 
             {/* Projects Grid */}
-            <section className="max-w-7xl min-w-md mx-auto px-4 lg:pb-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+            <section className="max-w-7xl lg:pt-0 pt-24 mx-auto px-4">
+                <div className="grid grid-cols-1 md:grid-cols-2   gap-16">
                     {projects.map((project, index) => (
-                        <div key={index} className="flex justify-center  min-w-xs   md:p-0 ">
+                        <div key={index} className="flex -my-16 lg:-my-20 justify-center md:p-0 ">
                             <TiltedCard
                                 imageSrc={project.image2}
                                 altText={project.title}
