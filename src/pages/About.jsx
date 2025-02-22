@@ -170,18 +170,18 @@ const AboutSection = () => {
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-2 gap-12">
+                    <div className="grid lg:grid-cols-2 gap-12">
                         {teamMembers.map((member, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                                className="group"
+                                className="group h-full items-center justify-center flex"
                             >
                                 <div className="bg-gray-900/40 border border-gray-800/40 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300">
                                     {/* Image Section */}
-                                    <div className="relative h-80">
+                                    <div className="relative h-full">
                                         <img
                                             src={member.image}
                                             alt={member.name}

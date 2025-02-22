@@ -9,7 +9,7 @@ export const LoaderProvider = ({ children }) => {
 
     useEffect(() => {
         setIsLoading(true);
-        const timer = setTimeout(() => setIsLoading(false), 1800); // Adjusted for smoother transition
+        const timer = setTimeout(() => setIsLoading(false), 1000); // ✅ Shortened for a smoother transition
         return () => clearTimeout(timer);
     }, [location.pathname]);
 
@@ -20,5 +20,5 @@ export const LoaderProvider = ({ children }) => {
     );
 };
 
-// Separate Export for useLoader Hook
+// ✅ Separate hook for better Fast Refresh compatibility
 export const useLoader = () => useContext(LoaderContext);
