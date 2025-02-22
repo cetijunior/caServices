@@ -1,27 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Loader2, CheckCircle, MessageSquare, Sparkles } from "lucide-react";
-import Particles from '../components/ui/Particles';
-import SplashCursor from '../components/ui/SplashCursor';
+import { Mail, Phone, MapPin, Send, Loader2, CheckCircle } from "lucide-react";
+import Particles from "../components/ui/Particles";
+import SplashCursor from "../components/ui/SplashCursor";
 
 const Contact = () => {
     const [formState, setFormState] = useState({
         name: "",
         email: "",
         message: "",
-        subject: "General Inquiry"
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [activeField, setActiveField] = useState(null);
-
     const [isTyping, setIsTyping] = useState(false);
 
+    // 🔵 UseCallback prevents unnecessary re-renders
+    const handleChange = useCallback((e) => {
+        setFormState((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API delay
         setIsSubmitting(false);
         setIsSubmitted(true);
         setTimeout(() => setIsSubmitted(false), 3000);
@@ -32,20 +37,20 @@ const Contact = () => {
             icon: <Mail className="w-6 h-6" />,
             title: "Email",
             value: "contact@company.com",
-            link: "mailto:contact@company.com"
+            link: "mailto:contact@company.com",
         },
         {
             icon: <Phone className="w-6 h-6" />,
             title: "Phone",
             value: "+1 (555) 123-4567",
-            link: "tel:+15551234567"
+            link: "tel:+15551234567",
         },
         {
             icon: <MapPin className="w-6 h-6" />,
             title: "Office",
             value: "123 Innovation Drive, Tech City, TC 12345",
-            link: "https://maps.google.com"
-        }
+            link: "https://maps.google.com",
+        },
     ];
 
     return (

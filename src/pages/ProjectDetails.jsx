@@ -20,6 +20,20 @@ const ProjectDetails = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
+
+    const navigateToProjects = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Smooth scrolling effect
+        });
+
+        setTimeout(() => {
+            navigate("/projects"); // Navigate after scrolling
+        }, 300); // Adjust timeout to match smooth scroll duration
+    };
+
+
+
     useEffect(() => {
         // Smooth scroll to top when component mounts
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -99,6 +113,8 @@ const ProjectDetails = () => {
                 />
             </div> */}
 
+
+
             {/* Hero Section */}
             <motion.div
                 style={{ opacity, scale }}
@@ -110,10 +126,10 @@ const ProjectDetails = () => {
                     transition={{ duration: 0.6 }}
                     className="absolute inset-0 bg-gradient-to-b from-black/60 to-black"
                 >
-                    <img
+                    <motion.img
                         src={project.image2}
                         alt={project.title}
-                        className="w-full h-full lg:object-fit object-scale-down  opacity-20 animate-pulse"
+                        className="invisible md:visible  w-full h-full lg:object-fit object-scale-down opacity-20 animate-pulse"
                     />
                 </motion.div>
 
@@ -130,18 +146,19 @@ const ProjectDetails = () => {
                             <div className="flex flex-wrap gap-3">
                                 {project.tags.map((tag, index) => (
                                     <motion.span
-                                        key={tag}
+                                        key={`${tag}-${index}`} // ✅ Ensures unique key
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: index * 0.1 }}
                                         className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-sm font-medium 
-                             hover:bg-white/20 transition-colors cursor-default
-                             border border-white/20 hover:border-white/40"
+                        hover:bg-white/20 transition-colors cursor-default
+                        border border-white/20 hover:border-white/40"
                                     >
                                         {tag}
                                     </motion.span>
                                 ))}
                             </div>
+
 
                             {/* Title */}
                             <h1 className={`text-4xl md:text-8xl pb-4 font-bold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent`}>
@@ -161,6 +178,11 @@ const ProjectDetails = () => {
                                 </div>
                             </div>
                         </motion.div>
+                        <motion.img
+                            src={project.image2}
+                            alt={project.title}
+                            className="visible md:hidden  w-full h-full lg:object-fit object-scale-down opacity-20 animate-pulse"
+                        />
                     </div>
                 </div>
 
@@ -343,7 +365,7 @@ const ProjectDetails = () => {
                                         </motion.a>
 
                                         <motion.button
-                                            onClick={() => navigate("/projects")}
+                                            onClick={navigateToProjects}
                                             className="w-full px-6 py-4 bg-white/5 backdrop-blur-md text-white rounded-lg 
                                  font-medium flex items-center justify-center gap-2 
                                  hover:bg-white/10 transition-all duration-300 group
@@ -373,48 +395,24 @@ const ProjectDetails = () => {
                                         </motion.button>
                                     </div>
                                 </motion.div>
-
-
-
-                                {/* Additional Resources */}
-                                {/* {project.links?.resources && (
-                                    <motion.div
-                                        variants={{
-                                            hidden: { opacity: 0, y: 20 },
-                                            visible: { opacity: 1, y: 0 }
-                                        }}
-                                        className="backdrop-blur-lg bg-white/5 p-6 rounded-xl border border-white/10"
-                                    >
-                                        <h3 className="text-lg font-semibold text-blue-400 mb-4">Additional Resources</h3>
-                                        <div className="space-y-3">
-                                            {project.links.resources.map((resource, index) => (
-                                                <motion.a
-                                                    key={index}
-                                                    href={resource.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="flex items-center gap-2 text-gray-300 hover:text-white 
-                                             transition-colors group"
-                                                    whileHover={{ x: 10 }}
-                                                >
-                                                    <ExternalLink className="w-4 h-4 group-hover:rotate-45 transition-transform" />
-                                                    <span>{resource.title}</span>
-                                                </motion.a>
-                                            ))}
-                                        </div>
-                                    </motion.div>
-                                )} */}
                             </div>
                         </div>
 
                     </motion.div>
                 </div>
+
+
                 {/* Metrics Grid */}
-                {Object.keys(metrics).length > 0 && (
+                {metrics && Object.keys(metrics).length > 0 && (
                     <div className="container p-4 mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 pb-24">
-                        {Object.entries(metrics).map(([key, value]) => renderMetric(value, key))}
+                        {Object.entries(metrics).map(([key, value]) => (
+                            <div key={key}>{renderMetric(value, key)}</div> // ✅ Added unique key
+                        ))}
                     </div>
                 )}
+
+
+
             </div>
         </div>
     );

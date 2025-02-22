@@ -6,10 +6,8 @@ import { ArrowUpRight, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import Particles from "../components/ui/Particles";
 
-
 const Projects = () => {
     const navigate = useNavigate();
-
 
     const handleNavigate = (project) => {
         navigate(`/projects/${encodeURIComponent(project.title)}`, { state: project });
@@ -21,27 +19,28 @@ const Projects = () => {
             });
         }, 100);
     };
+
     return (
-        <div className="container mx-auto text-white">
+        <div className="max-w-6xl mx-auto w-full lg:pb-14 text-white">
             {/* Hero Section */}
             <div className="relative py-10 lg:pb-10 pb-20 pt-16 overflow-hidden">
-                <div className="max-w-7xl lg:pb-16 mx-auto px-4">
-                    <h1 className="text-5xl md:text-7xl font-bold text-center mb-4">
+                <div className="max-w-7xl lg:pb-16 mx-auto px-4 text-center">
+                    <h1 className="text-5xl md:text-7xl font-bold mb-4">
                         Our Projects
                     </h1>
-                    <p className="text-gray-400 text-center text-lg max-w-2xl mx-auto">
+                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
                         Transforming ideas into digital excellence through innovative design and technology
                     </p>
                 </div>
             </div>
 
             {/* Projects Grid */}
-            <section className="max-w-7xl lg:pt-0 pt-24 mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2   gap-16">
+            <section className="lg:pt-0 pt-10 mx-auto px-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 justify-items-center">
                     {projects.map((project, id) => (
-                        <div key={id} className="flex -my-16 lg:scale-100 scale-90 lg:-my-20 justify-center md:p-0 ">
+                        <div key={id} className="w-full scale-95  max-w-md flex justify-center md:-my-12 -my-20">
                             <TiltedCard
-                                imageSrc={project.image2}
+                                //Img
                                 altText={project.title}
                                 captionText={project.title}
                                 containerHeight="600px"
@@ -58,7 +57,7 @@ const Projects = () => {
                                         initial={{ opacity: 0, y: 10 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.4, ease: "easeOut" }}
-                                        className={`w-full h-full lg:mt-0 -mt-28 group group-hover max-w-md bg-gradient-to-br shadow-2xl shadow-${project.bgColor}  bg-${project.bgColor} backdrop-blur-md p-6 rounded-lg flex flex-col justify-end`}
+                                        className={`w-full h-full group group-hover max-w-md bg-gradient-to-br shadow-2xl shadow-${project.bgColor} bg-${project.bgColor} backdrop-blur-md p-6 rounded-lg flex flex-col justify-end`}
                                     >
                                         {/* Tags */}
                                         <div className="flex w-full gap-2 mb-3">
@@ -79,6 +78,13 @@ const Projects = () => {
                                             {project.description}
                                         </p>
 
+                                        {/* Image Styling Directly Here */}
+                                        <img
+                                            src={project.image2}
+                                            alt={project.title}
+                                            className={`w-full h-auto mb-6 group-hover:scale-105 transition-all duration-300 shadow-${project.bgColor} sm:object-scale-down lg:object-cover rounded-lg`}
+                                        />
+
                                         {/* Year & View Button */}
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-1 text-gray-400">
@@ -88,7 +94,8 @@ const Projects = () => {
 
                                             <div
                                                 onClick={() => handleNavigate(project)}
-                                                className="flex cursor-pointer items-center gap-2 text-sm font-medium text-white/80 group-hover:text-white transition-colors duration-300">
+                                                className="flex cursor-pointer items-center gap-2 text-sm font-medium text-white/80 group-hover:text-white transition-colors duration-300"
+                                            >
                                                 <span>View Project</span>
                                                 <ArrowUpRight className="w-4 h-4 group-hover:scale-110 group-hover:text-cyan-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                                             </div>
