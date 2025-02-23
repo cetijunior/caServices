@@ -36,21 +36,21 @@ const Contact = () => {
         {
             icon: <Mail className="w-6 h-6" />,
             title: "Email",
-            value: "contact@company.com",
-            link: "mailto:contact@company.com",
+            value: "cawebsiteservices@gmail.com",
+            link: "mailto:cawebsiteservices@gmail.com",
         },
         {
             icon: <Phone className="w-6 h-6" />,
             title: "Phone",
-            value: "+1 (555) 123-4567",
-            link: "tel:+15551234567",
+            value: "+35699018591",
+            link: "tel:+35699018591",
         },
-        {
-            icon: <MapPin className="w-6 h-6" />,
-            title: "Office",
-            value: "123 Innovation Drive, Tech City, TC 12345",
-            link: "https://maps.google.com",
-        },
+        // {
+        //     icon: <MapPin className="w-6 h-6" />,
+        //     title: "Office",
+        //     value: "123 Innovation Drive, Tech City, TC 12345",
+        //     link: "https://maps.google.com",
+        // },
     ];
 
     return (

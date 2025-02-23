@@ -136,120 +136,11 @@ const Services = () => {
         <div className="bg-black min-h-screen w-full">
             {/* Hero Section */}
 
-            {/* TiltedCard Showcase */}
-            <section className="lg:py-12  pb-20 p-8 lg:px-6 bg-gradient-to-t from-gray-900 to-black">
 
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <motion.div
-                            variants={{
-                                hidden: { opacity: 0, y: 20 },
-                                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-                            }}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-100px" }}
-                            className="w-full mx-auto container lg:mt-0 mt-20  p-8 rounded-2xl bg-gradient-to-br shadow-2xl  from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50"
-                        >
-                            <motion.div
-                                variants={itemVariants}
-                                className="inline-block mb-6 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20"
-                            >
-                                <span className="text-sm font-medium text-purple-400">
-                                    Component Showcase
-                                </span>
-                            </motion.div>
-
-                            <motion.h2
-                                variants={itemVariants}
-                                className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 mb-4"
-                            >
-                                Tilted Card Component
-                            </motion.h2>
-
-                            <motion.p
-                                variants={itemVariants}
-                                className="text-lg text-gray-400 mb-8 leading-relaxed"
-                            >
-                                Add depth and interactivity to your content with our TiltedCard component.
-                                Features smooth animations, hover effects, and customizable overlay content.
-                            </motion.p>
-
-                            <motion.div
-                                variants={itemVariants}
-                                className="space-y-3"
-                            >
-                                {features.map((feature, index) => (
-                                    <motion.div
-                                        key={feature}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.1 }}
-                                        className="flex items-center space-x-3"
-                                    >
-                                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                                        <motion.span
-                                            whileHover={{ x: 4 }}
-                                            className="text-gray-300 font-medium"
-                                        >
-                                            {feature}
-                                        </motion.span>
-                                    </motion.div>
-                                ))}
-                            </motion.div>
-
-                            <motion.div
-                                variants={itemVariants}
-                                className="flex items-center justify-center mt-8 pt-8 border-t border-gray-800/50"
-                            >
-                                <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-shadow"
-                                >
-                                    Explore Documentation
-                                </motion.button>
-                            </motion.div>
-                        </motion.div>
-
-
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            className="w-full mx-auto scale-90 container group lg:mt-0 rounded-2xl bg-gradient-to-br shadow-2xl from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50 relative overflow-hidden"
-                        >
-                            {/* Glossy Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-20 pointer-events-none" />
-                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/5 opacity-20 pointer-events-none" />
-
-                            <TiltedCard
-                                imageSrc="/assets/logos/logo.png"
-                                altText="Demo Card"
-                                captionText="Interactive Demo"
-                                containerHeight="570px"
-                                containerWidth="100%"
-                                imageHeight="100%"
-                                imageWidth="100%"
-                                rotateAmplitude={12}
-                                scaleOnHover={1.05}
-                                displayOverlayContent={true}
-                                overlayContent={
-                                    <div className="rounded-2xl group-hover:scale-90 group-hover:mt-6 cursor-default group group-hover:shadow-2xl p-6 text-purple-100 bg-gray-900/50 backdrop-blur-2xl shadow-black shadow-lg transition-all duration-300 border border-gray-800/50">
-                                        {/* Glossy Overlay for Content */}
-                                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-20 pointer-events-none rounded-2xl" />
-                                        <h3 className="text-2xl font-bold mb-4 relative z-10">Interactive Demo</h3>
-                                        <p className="relative z-10">Hover and move your cursor to see the tilt effect in action!</p>
-                                    </div>
-                                }
-                            />
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
 
 
             {/* Infinite Scroll Showcase */}
-            <section className="py-24 px-6 bg-gradient-to-b from-gray-900 to-black">
+            <section className="py-24 px-6 bg-gradient-to-t from-gray-900 to-black">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
@@ -361,7 +252,7 @@ const Services = () => {
             </section>
 
             {/* Flowing Menu Showcase */}
-            <section className="py-24 px-6 bg-gradient-to-t from-gray-900 to-black">
+            <section className="py-24 px-6 bg-gradient-to-b from-gray-900 to-black">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <motion.div
@@ -456,11 +347,123 @@ const Services = () => {
                         >
                             <FlowingMenu
                                 items={[
-                                    { link: '#', text: 'Custom Software', image: 'https://picsum.photos/600/400?random=1' },
-                                    { link: '#', text: 'Cloud Solutions', image: 'https://picsum.photos/600/400?random=2' },
-                                    { link: '#', text: 'AI & Data Science', image: 'https://picsum.photos/600/400?random=3' },
-                                    { link: '#', text: 'Cybersecurity', image: 'https://picsum.photos/600/400?random=4' },
+                                    { text: 'Custom Software', image: 'https://picsum.photos/600/400?random=1' },
+                                    { text: 'Cloud Solutions', image: 'https://picsum.photos/600/400?random=2' },
+                                    { text: 'AI & Data Science', image: 'https://picsum.photos/600/400?random=5' },
+                                    { text: 'Cybersecurity', image: 'https://picsum.photos/600/400?random=4' },
                                 ]}
+                            />
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+
+            {/* TiltedCard Showcase */}
+            <section className="p-8 lg:px-6 bg-gradient-to-t from-gray-900 to-black">
+
+                <div className="container mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <motion.div
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                            }}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            className="w-full mx-auto container lg:mt-0 mt-20  p-8 rounded-2xl bg-gradient-to-br shadow-2xl  from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50"
+                        >
+                            <motion.div
+                                variants={itemVariants}
+                                className="inline-block mb-6 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20"
+                            >
+                                <span className="text-sm font-medium text-purple-400">
+                                    Component Showcase
+                                </span>
+                            </motion.div>
+
+                            <motion.h2
+                                variants={itemVariants}
+                                className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 mb-4"
+                            >
+                                Tilted Card Component
+                            </motion.h2>
+
+                            <motion.p
+                                variants={itemVariants}
+                                className="text-lg text-gray-400 mb-8 leading-relaxed"
+                            >
+                                Add depth and interactivity to your content with our TiltedCard component.
+                                Features smooth animations, hover effects, and customizable overlay content.
+                            </motion.p>
+
+                            <motion.div
+                                variants={itemVariants}
+                                className="space-y-3"
+                            >
+                                {features.map((feature, index) => (
+                                    <motion.div
+                                        key={feature}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="flex items-center space-x-3"
+                                    >
+                                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                                        <motion.span
+                                            whileHover={{ x: 4 }}
+                                            className="text-gray-300 font-medium"
+                                        >
+                                            {feature}
+                                        </motion.span>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+
+                            <motion.div
+                                variants={itemVariants}
+                                className="flex items-center justify-center mt-8 pt-8 border-t border-gray-800/50"
+                            >
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-shadow"
+                                >
+                                    Explore Documentation
+                                </motion.button>
+                            </motion.div>
+                        </motion.div>
+
+
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            className="w-full mx-auto lg:scale-90 container group lg:mt-0 rounded-2xl bg-gradient-to-br shadow-2xl from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-800/50 relative overflow-hidden"
+                        >
+                            {/* Glossy Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-20 pointer-events-none" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/5 opacity-20 pointer-events-none" />
+
+                            <TiltedCard
+                                imageSrc="/assets/logos/logo.png"
+                                altText="Demo Card"
+                                captionText="Interactive Demo"
+                                containerHeight="620px"
+                                containerWidth="100%"
+                                imageHeight="100%"
+                                imageWidth="100%"
+                                rotateAmplitude={12}
+                                scaleOnHover={1.05}
+                                displayOverlayContent={true}
+                                overlayContent={
+                                    <div className="rounded-2xl group-hover:scale-90 group-hover:mt-6 cursor-default group group-hover:shadow-2xl p-6 text-purple-100 bg-gray-900/50 backdrop-blur-2xl shadow-black shadow-lg transition-all duration-300 border border-gray-800/50">
+                                        {/* Glossy Overlay for Content */}
+                                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-20 pointer-events-none rounded-2xl" />
+                                        <h3 className="text-2xl font-bold mb-4 relative z-10">Interactive Demo</h3>
+                                        <p className="relative z-10">Hover and move your cursor to see the tilt effect in action!</p>
+                                    </div>
+                                }
                             />
                         </motion.div>
                     </div>

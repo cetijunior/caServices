@@ -18,7 +18,7 @@ import {
     Lightbulb,
     Trophy
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { teamMembers } from "../data/teamData";
 
 import Lanyard1 from "../components/ui/LanyardC";
@@ -68,6 +68,13 @@ const AboutSection = () => {
         setTimeout(() => {
             navigate(`/about/${member.id}`);
         }, 300);
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     };
 
     return (
@@ -330,11 +337,48 @@ const AboutSection = () => {
                     <p className="text-gray-300 mb-8">
                         Join us in our mission to democratize web design. Together, we can create a digital landscape where every voice has the opportunity to be heard and every business has the tools to succeed.
                     </p>
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full transition-all duration-300">
-                        <a href="/careers" className="flex items-center gap-2">
-                            View Open Positions <ArrowRight className="w-5 h-5" />
-                        </a>
-                    </button>
+
+                    <div className="flex items-center justify-evenly">
+                        <Link
+                            onClick={scrollToTop}
+                            to="/careers"
+                            className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full overflow-hidden"
+                        >
+                            <div className="absolute inset-0 w-full h-full bg-white/5 border border-white/10  group-hover:bg-white/10" />
+                            <div className="absolute inset-0 w-full h-full  shadow-2xl shadow-blue-400 bg-gradient-to-br from-white/20 via-blue-600/20 to-black/30 opacity-0 group-hover:opacity-100 blur-lg transition-all duration-300" />
+                            <div className="relative flex items-center justify-center text-white">
+                                View Open Positions
+                                <motion.span
+                                    initial={{ x: -4, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 1.5 }}
+                                    className="ml-2 text-xl"
+                                >
+                                    →
+                                </motion.span>
+                            </div>
+                        </Link>
+
+                        <Link
+                            onClick={scrollToTop}
+                            to="/contact"
+                            className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full overflow-hidden"
+                        >
+                            <div className="absolute inset-0 w-full h-full bg-white/5 border border-white/10  group-hover:bg-white/10" />
+                            <div className="absolute inset-0 w-full h-full  shadow-2xl shadow-blue-400 bg-gradient-to-br from-white/20 via-blue-600/20 to-black/30 opacity-0 group-hover:opacity-100 blur-lg transition-all duration-300" />
+                            <div className="relative flex items-center justify-center text-white">
+                                Contact Us!
+                                <motion.span
+                                    initial={{ x: -4, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 1.5 }}
+                                    className="ml-2 text-xl"
+                                >
+                                    →
+                                </motion.span>
+                            </div>
+                        </Link>
+                    </div>
                 </motion.div>
             </section>
 
