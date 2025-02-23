@@ -23,13 +23,25 @@ const Contact = () => {
         }));
     }, []);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
-        await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API delay
-        setIsSubmitting(false);
-        setIsSubmitted(true);
-        setTimeout(() => setIsSubmitted(false), 3000);
+
+        const { name, email, message } = formState;
+
+        // Ensure required fields are filled
+        if (!name || !email || !message) {
+            alert("Please fill in all fields before sending.");
+            return;
+        }
+
+        // Construct the mailto link
+        const mailtoLink = `mailto:cawebsiteservices@gmail.com?subject=New Inquiry&body=
+            Name: ${encodeURIComponent(name)}%0D%0A
+            Email: ${encodeURIComponent(email)}%0D%0A
+            Message: ${encodeURIComponent(message)}`;
+
+        // Open default email client
+        window.location.href = mailtoLink;
     };
 
     const contactMethods = [
