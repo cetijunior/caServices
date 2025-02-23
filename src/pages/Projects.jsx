@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Particles from "../components/ui/Particles";
+import Waves from "../components/ui/Waves";
 
 
 const containerVariants = {
@@ -40,7 +41,8 @@ const Projects = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto w-full lg:pb-14 text-white">
+        <div className="lg:px-32 min-h-screen mx-auto w-full lg:pb-14 text-white">
+
             {/* Hero Section */}
             <div className="relative py-10 lg:pb-10 pb-20 pt-16 overflow-hidden">
                 <div className="max-w-7xl lg:pb-16 mx-auto px-4 text-center">

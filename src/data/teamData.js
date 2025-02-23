@@ -1,171 +1,254 @@
 export const teamMembers = [
     {
         id: "cj",
-        name: "CJ",
-        role: "CEO & Tech Innovator",
-        tagline: "Building the future through technology and innovation",
-        bio: "Passionate technology leader with 15+ years of experience in driving innovation and building scalable solutions. Specialized in AI/ML, cloud architecture, and digital transformation.",
-        location: "San Francisco, CA",
-        email: "cj@example.com",
+        name: "Shefqet (CJ) Lame",
+        role: "Developer & Tech Enthusiast",
+        tagline: "Innovative Developer specializing in Web & Mobile Solutions",
+        bio: "Shefqet (CJ) Lame is a dedicated computer science enthusiast and developer with a strong foundation in web and mobile app development. Known for academic excellence and leadership as a class president, he brings creativity, technical expertise, and a passion for building seamless digital experiences.",
+        location: "Gudja, Malta",
+        email: "lameceti1@gmail.com",
         availability: "Open to speaking opportunities",
         image: "/assets/images/pfp.jpeg",
         social: {
-            github: "#",
-            linkedin: "#",
+            github: "https://github.com/cetijunior",
+            linkedin: "https://www.linkedin.com/in/shefqet-cj-lame/",
             twitter: "#"
         },
         skills: {
-            technical: ["Python", "JavaScript", "React", "Node.js", "AWS", "Docker", "Kubernetes", "TensorFlow"],
-            leadership: ["Team Management", "Product Strategy", "Tech Vision", "Mentorship", "Agile Leadership"],
-            domains: ["AI/ML", "Cloud Computing", "Digital Transformation", "Tech Innovation"]
+            technical: [
+                "JavaScript",
+                "HTML/CSS",
+                "ReactJS",
+                "NextJS",
+                "Tailwind CSS",
+                "ViteJS",
+                "NodeJS",
+                "React Native",
+                "Expo",
+                "Python",
+                "Django",
+                "Java",
+                "Kotlin",
+                "SQL"
+            ],
+            leadership: [
+                "Team Leadership",
+                "Project Management",
+                "Public Speaking",
+                "Communication",
+                "Collaboration"
+            ],
+            domains: [
+                "Web Development",
+                "Mobile App Development",
+                "AI Solutions",
+                "Interactive Game Development"
+            ]
         },
         projects: [
             {
-                title: "AI-Powered Analytics Platform",
-                description: "Led the development of an enterprise-scale analytics platform using cutting-edge AI technologies",
-                tech: ["Python", "TensorFlow", "AWS", "React"],
-                link: "#",
+                title: "CA Website Services",
+                description: "Co-created a platform showcasing personal projects and technical expertise, operating as a fully functional web development agency.",
+                tech: ["HTML/CSS", "ReactJS", "NodeJS"],
+                link: "https://www.ca-webservices.com/",
                 image: "/api/placeholder/600/400"
             },
             {
-                title: "Cloud Migration Framework",
-                description: "Designed and implemented a framework for seamless cloud migration of legacy systems",
-                tech: ["AWS", "Docker", "Kubernetes", "Terraform"],
-                link: "#",
+                title: "LivingApp",
+                description: "Developed a React Native app featuring user registration, QR code scanning, and task tracking with AWS integration.",
+                tech: ["React Native", "Expo", "AWS"],
+                link: "https://github.com/cetijunior/LivingApp/blob/main/README.md",
                 image: "/api/placeholder/600/400"
             },
             {
-                title: "Smart City Initiative",
-                description: "Spearheaded a smart city project implementing IoT sensors and real-time analytics",
-                tech: ["IoT", "Python", "MongoDB", "React"],
-                link: "#",
+                title: "Zgjidhje.AI",
+                description: "Built an AI-powered academic solutions platform with responsive web and mobile interfaces and integrated OpenAI API.",
+                tech: ["ReactJS", "React Native", "OpenAI API"],
+                link: "https://zgjidhje-ai-web.vercel.app/",
+                image: "/api/placeholder/600/400"
+            },
+            {
+                title: "Card Game",
+                description: "Created an interactive multiplayer card game focusing on dynamic gameplay and real-time interactions.",
+                tech: ["JavaScript", "Web Technologies"],
+                link: "https://github.com/cetijunior/Card-Game",
                 image: "/api/placeholder/600/400"
             }
         ],
         experience: [
             {
-                role: "CEO",
-                company: "Current Company",
-                period: "2020 - Present",
+                role: "Waiter",
+                company: "Marinos bei Sotiri",
+                period: "Jun 2024 – Sep 2024",
                 highlights: [
-                    "Led company growth from 10 to 50+ employees",
-                    "Secured $10M in Series A funding",
-                    "Launched 3 flagship products"
+                    "Delivered exceptional customer service while collaborating with the team for smooth operations."
                 ]
             },
             {
-                role: "CTO",
-                company: "Previous Startup",
-                period: "2015 - 2020",
+                role: "Waiter / Warehouse",
+                company: "Monte-Kristo Estate",
+                period: "Jun 2023 – Sep 2023",
                 highlights: [
-                    "Built core technology platform",
-                    "Led team of 25 engineers",
-                    "Achieved successful exit"
+                    "Served customers and assisted with inventory organization and stocking to support smooth operations."
+                ]
+            },
+            {
+                role: "Lifeguard",
+                company: "Equos AquaPark",
+                period: "Jun 2022 – Sep 2022",
+                highlights: [
+                    "Ensured guest safety by monitoring swimming areas and responding to emergencies promptly."
+                ]
+            },
+            {
+                role: "Sales & Customer Care",
+                company: "Adidas",
+                period: "Jun 2021 – Sep 2021",
+                highlights: [
+                    "Provided customer care and maintained a well-organized, visually appealing store environment."
                 ]
             }
         ],
         education: [
             {
-                degree: "MS in Computer Science",
-                school: "Stanford University",
-                year: "2015"
+                degree: "B.Sc. in Applied Computer Science (in progress)",
+                school: "Otto-Friedrich-Universität Bamberg",
+                year: "2024 - Present"
             },
             {
-                degree: "BS in Software Engineering",
-                school: "MIT",
-                year: "2013"
+                degree: "Electronics Engineering / Computer Science",
+                school: "Harry T Fultz Institute",
+                year: "2019 - 2023"
             }
         ],
-        speaking: [
-            {
-                event: "TechCon 2024",
-                topic: "Future of AI in Enterprise",
-                date: "March 2024"
-            },
-            {
-                event: "Innovation Summit",
-                topic: "Building Scalable Tech Teams",
-                date: "January 2024"
-            }
-        ]
+        speaking: []
     },
-
-
 
 
 
     {
         id: "archie",
-        name: "Archie",
-        role: "CTO & AI Expert",
-        tagline: "Pioneering the future of AI and cloud computing.",
-        bio: "Tech strategist and AI expert leading next-gen software solutions. Specialized in AI/ML, system architecture, and cloud infrastructure.",
-        location: "New York, NY",
-        email: "archie@example.com",
+        name: "Luars Qamo",
+        role: "Co-Founder & Developer",
+        tagline: "Innovative Developer delivering creative web and mobile solutions.",
+        bio: "Luars Qamo is a passionate developer and co-founder with a strong background in applied computer science. Serving as Vice Class President during his studies and actively contributing to robotics and open source clubs, he combines technical expertise with leadership, bringing hands-on experience in project management and creative problem solving.",
+        location: "Gudja, Malta",
+        email: "luarsarsi@gmail.com",
         availability: "Open for collaborations",
         image: "/assets/images/archie.jpeg",
         social: {
-            github: "#",
+            github: "https://github.com/archieQa",
             linkedin: "#",
             twitter: "#"
         },
         skills: {
-            technical: ["Go", "Rust", "Python", "Kubernetes", "AWS Lambda", "GCP", "AI/ML", "Data Engineering"],
-            leadership: ["System Design", "Scalability", "Cloud Security", "AI Ethics", "DevOps"],
-            domains: ["Artificial Intelligence", "Cloud Computing", "Distributed Systems"]
+            technical: [
+                "JavaScript",
+                "HTML/CSS",
+                "ReactJS",
+                "Tailwind CSS",
+                "ViteJS",
+                "NextJS",
+                "NodeJS",
+                "React Native",
+                "Expo",
+                "Java",
+                "Kotlin",
+                "Python",
+                "Django",
+                "SQL",
+                "MySQL",
+                "Postman"
+            ],
+            leadership: [
+                "Team Leadership",
+                "Project Management",
+                "Public Speaking",
+                "Communication"
+            ],
+            domains: [
+                "Web Development",
+                "Mobile App Development",
+                "AI-Powered Solutions",
+                "Interactive Game Development"
+            ]
         },
         projects: [
             {
-                title: "AI-Powered Code Assistant",
-                description: "Developed an AI-based tool that assists developers in writing optimized code.",
-                tech: ["Go", "Python", "AI", "GraphQL"],
-                link: "#",
+                title: "CA Website Services",
+                description: "Co-created a platform to showcase personal projects and technical expertise, operating as a fully functional web development agency.",
+                tech: ["HTML/CSS", "ReactJS", "NodeJS"],
+                link: "https://www.ca-webservices.com/",
                 image: "/api/placeholder/600/400"
             },
             {
-                title: "Cloud Optimization Suite",
-                description: "Built a suite of cloud-based tools to enhance server efficiency and reduce latency.",
-                tech: ["Rust", "AWS", "Kubernetes", "Docker"],
-                link: "#",
+                title: "LivingApp",
+                description: "Co-founded and developed a React Native app with AWS integration for user registration, QR code scanning, and task tracking.",
+                tech: ["React Native", "Expo", "AWS"],
+                link: "https://github.com/archieQa/LivingApp",
                 image: "/api/placeholder/600/400"
             },
             {
-                title: "Real-Time AI Analytics",
-                description: "Implemented AI models for large-scale real-time data analysis.",
-                tech: ["Python", "TensorFlow", "GCP", "BigQuery"],
-                link: "#",
+                title: "Zgjidhje.AI",
+                description: "Developed a multi-platform AI-powered academic solutions platform with responsive web and mobile interfaces, integrated with OpenAI API.",
+                tech: ["ReactJS", "React Native", "OpenAI API"],
+                link: "https://zgjidhje-ai-web.vercel.app/",
+                image: "/api/placeholder/600/400"
+            },
+            {
+                title: "Card Game",
+                description: "Designed and developed an interactive multiplayer card game with dynamic gameplay and real-time interactions.",
+                tech: ["JavaScript", "Web Technologies"],
+                link: "https://github.com/archieQa/Card-Game",
                 image: "/api/placeholder/600/400"
             }
         ],
         experience: [
             {
-                role: "CTO",
-                company: "Current Company",
-                period: "2020 - Present",
+                role: "Sales & Customer Care",
+                company: "Kult",
+                period: "Jun 2024 – Dec 2024",
                 highlights: [
-                    "Designed AI infrastructure for real-time analytics",
-                    "Expanded cloud architecture to support millions of users",
-                    "Developed high-performance AI-based products"
+                    "Provided customer care and maintained a well-organized, visually appealing store environment."
                 ]
             },
             {
-                role: "Lead AI Engineer",
-                company: "AI Research Lab",
-                period: "2015 - 2020",
+                role: "Waiter",
+                company: "Marinos bei Sotiri",
+                period: "Jun 2024 – Sep 2024",
                 highlights: [
-                    "Published 5 research papers on AI scalability",
-                    "Developed ML models for real-time AI analytics",
-                    "Spearheaded AI-driven automation projects"
+                    "Delivered exceptional customer service while collaborating with the team for smooth operations."
+                ]
+            },
+            {
+                role: "Waiter / Warehouse",
+                company: "Monte-Kristo Estate",
+                period: "Jun 2023 – Sep 2023",
+                highlights: [
+                    "Served customers and assisted with inventory organization and stocking to support smooth operations."
+                ]
+            },
+            {
+                role: "Lifeguard",
+                company: "Equos AquaPark",
+                period: "Jun 2022 – Sep 2022",
+                highlights: [
+                    "Ensured guest safety by monitoring swimming areas and responding to emergencies promptly."
                 ]
             }
         ],
         education: [
-            { degree: "PhD in Artificial Intelligence", school: "MIT", year: "2017" },
-            { degree: "BS in Computer Science", school: "Harvard University", year: "2013" }
+            {
+                degree: "B.Sc. in Applied Computer Science (in progress)",
+                school: "Otto-Friedrich-Universität Bamberg",
+                year: "2024 - Present"
+            },
+            {
+                degree: "Electronics Engineering / Computer Science",
+                school: "Harry T Fultz Institute",
+                year: "2019 - 2023"
+            }
         ],
-        speaking: [
-            { event: "AI Summit 2024", topic: "AI and the Future of Work", date: "April 2024" },
-            { event: "CloudCon 2024", topic: "Optimizing Cloud Infrastructure", date: "February 2024" }
-        ]
+        speaking: []
     }
 ];

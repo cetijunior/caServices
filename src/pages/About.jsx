@@ -10,16 +10,27 @@ import {
     Building,
     Award,
     ExternalLink,
-    Briefcase,
     Code,
     GraduationCap,
     Heart,
     Globe,
     Sparkles,
-    Target
+    Lightbulb,
+    Trophy
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { teamMembers } from "../data/teamData";
+
+import Lanyard1 from "../components/ui/LanyardC";
+import Lanyard2 from "../components/ui/LanyardA";
+
+// Import your background components (ensure these exist in your project)
+import Particles from "../components/ui/Particles";
+import Waves from "../components/ui/Waves";
+import SpotlightCard from "../components/ui/SpotlightCard";
+
+
+
 
 const stats = [
     { icon: <Users className="w-6 h-6 text-blue-400 group-hover:text-blue-500 transition-all duration-300" />, value: "50+", label: "Team Members" },
@@ -49,7 +60,7 @@ const visionCards = [
 const AboutSection = () => {
     const navigate = useNavigate();
 
-    const navigateToProjects = (member) => {
+    const navigateToMember = (member) => {
         window.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -60,22 +71,32 @@ const AboutSection = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black">
+        <div className="relative min-h-screen bg-black overflow-hidden">
+            {/* Background Components */}
+
             {/* Hero Section */}
-            <section className="relative py-24 px-6 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-black"></div>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="relative z-10 max-w-7xl mx-auto text-center"
-                >
-                    <h1 className="text-6xl font-bold text-white mb-6">
-                        Crafting Digital Excellence
-                    </h1>
-                    <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                        Where innovation meets accessibility. We're dedicated to making the web beautiful and accessible for everyone.
-                    </p>
-                </motion.div>
+
+
+            <section className="relative overflow-hidden">
+                <div className="absolute inset-0">
+                    <Particles />
+                </div>
+
+                <div className="lg:min-h-[50vh] min-h-[70vh] flex justify-center items-center text-center relative max-w-6xl mx-auto px-4 sm:px-6 py-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="space-y-6"
+                    >
+                        <h1 className="text-4xl pb-2 sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+                            Crafting Digital Excellence
+                        </h1>
+                        <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto px-4">
+                            Where innovation meets accessibility. We're dedicated to making the web beautiful and accessible for everyone.
+                        </p>
+
+                    </motion.div>
+                </div>
             </section>
 
             {/* Vision Section */}
@@ -108,53 +129,62 @@ const AboutSection = () => {
                 </div>
             </section>
 
-            {/* Stats Section */}
-            <section className="relative py-16 px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6"
-                >
-                    {stats.map((stat, index) => (
-                        <div
-                            key={index}
-                            className="bg-gray-800/40 border border-gray-700/40 rounded-2xl p-6 text-center group hover:border-blue-500/50 transition-all duration-300"
-                        >
-                            <div className="flex justify-center mb-4">{stat.icon}</div>
-                            <h3 className="text-4xl font-bold text-white mb-2">{stat.value}</h3>
-                            <p className="text-gray-400 text-sm">{stat.label}</p>
-                        </div>
-                    ))}
-                </motion.div>
-            </section>
+            <div className=" bg-gradient-to-t from-black to bg-gray-900 space-y-16 py-12">
 
-            {/* Values Section */}
-            <section className="relative py-24 px-6 bg-gradient-to-b from-gray-900 to-black">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    className="max-w-7xl mx-auto text-center mb-16"
-                >
-                    <h2 className="text-5xl font-bold text-white mb-6">Our Values</h2>
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        <div className="bg-gray-800/40 border border-gray-700/40 rounded-2xl p-8">
-                            <h3 className="text-2xl font-bold text-white mb-4">Innovation with Purpose</h3>
-                            <p className="text-gray-300">
-                                We push the boundaries of web design while keeping our solutions practical and accessible. Every innovation serves a purpose in enhancing your digital presence.
-                            </p>
-                        </div>
-                        <div className="bg-gray-800/40 border border-gray-700/40 rounded-2xl p-8">
-                            <h3 className="text-2xl font-bold text-white mb-4">Client Success First</h3>
-                            <p className="text-gray-300">
-                                Your success is our success. We measure our achievements through the growth and satisfaction of our clients, building lasting partnerships that drive mutual growth.
-                            </p>
-                        </div>
+                {/* Values Section */}
+                <section className="container mx-auto space-y-8">
+                    <h2 className="text-3xl font-bold text-center mb-8">Our Values ✨</h2>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <SpotlightCard className="p-6">
+                            <div className="space-y-4">
+                                <div className="flex items-center space-x-2">
+                                    <Lightbulb className="w-6 h-6 text-blue-500" />
+                                    <h3 className="text-xl font-semibold">Innovation with Purpose 💡</h3>
+                                </div>
+                                <p className="text-gray-600 dark:text-gray-300">
+                                    We push the boundaries of web design while keeping our solutions practical
+                                    and accessible. Every innovation serves a purpose in enhancing your digital presence.
+                                </p>
+                            </div>
+                        </SpotlightCard>
+
+                        <SpotlightCard className="p-6">
+                            <div className="space-y-4">
+                                <div className="flex items-center space-x-2">
+                                    <Trophy className="w-6 h-6 text-yellow-500" />
+                                    <h3 className="text-xl font-semibold">Client Success First 🏆</h3>
+                                </div>
+                                <p className="text-gray-600 dark:text-gray-300">
+                                    Your success is our success. We measure our achievements through the growth
+                                    and satisfaction of our clients, building lasting partnerships that drive mutual growth.
+                                </p>
+                            </div>
+                        </SpotlightCard>
                     </div>
-                </motion.div>
-            </section>
+                </section>
 
-            {/* Team Section */}
+                {/* Stats Section */}
+                <section className="container mx-auto space-y-8">
+                    <h2 className="text-3xl font-bold text-center mb-8">Our Impact 📈</h2>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {stats.map((stat, index) => (
+                            <SpotlightCard key={index} className="p-6">
+                                <div className="flex flex-col items-center space-y-4 text-center">
+                                    <div className="text-blue-500">
+                                        {stat.icon}
+                                    </div>
+                                    <span className="text-3xl font-bold">{stat.value}</span>
+                                    <span className="text-gray-600 dark:text-gray-300">{stat.label}</span>
+                                </div>
+                            </SpotlightCard>
+                        ))}
+                    </div>
+                </section>
+            </div>
+
+
+
+            {/* Team Section*/}
             <section className="relative py-24 px-6">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
@@ -170,7 +200,7 @@ const AboutSection = () => {
                         </p>
                     </motion.div>
 
-                    <div className="grid lg:grid-cols-2 gap-12">
+                    <div className="grid md:grid-cols-2 gap-12">
                         {teamMembers.map((member, index) => (
                             <motion.div
                                 key={index}
@@ -263,8 +293,8 @@ const AboutSection = () => {
 
                                                 {/* Portfolio Button */}
                                                 <button
-                                                    onClick={() => navigateToProjects(member)}
-                                                    className="border p-1 px-3 rounded-2xl transition-all duration-300 border-blue-500 text-blue-400 hover:bg-blue-500/20 hover:text-white"
+                                                    onClick={() => navigateToMember(member)}
+                                                    className="border md:mr-0 -mr-10 md:scale-100 scale-75 p-1 px-3 rounded-2xl transition-all duration-300 border-blue-500 text-blue-400 hover:bg-blue-500/20 hover:text-white"
                                                 >
                                                     <div className="flex items-center gap-2">
                                                         View Portfolio <ExternalLink className="w-4 h-4" />
@@ -278,15 +308,21 @@ const AboutSection = () => {
                         ))}
                     </div>
                 </div>
+                <div className="-mt-2 container rounded-2xl mx-auto md:visible hidden md:grid grid-cols-2">
+                    <Lanyard1 position={[0, 0, 20]} gravity={[0, -40, 0]} />
+                    <Lanyard2 position={[0, 0, 20]} gravity={[0, -40, 0]} />
+
+                </div>
             </section>
 
+
             {/* Join Us Section with Enhanced Message */}
-            <section className="relative py-24 px-6 bg-gradient-to-b from-black to-blue-900/20">
+            <section className="relative mt-4 pb-24 px-6 bg-gradient-to-b from-black to-blue-900/20">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="max-w-3xl mx-auto text-center"
+                    className="w-full mx-auto text-center"
                 >
                     <h2 className="text-4xl font-bold text-white mb-6">
                         Be Part of Our Story
@@ -301,6 +337,7 @@ const AboutSection = () => {
                     </button>
                 </motion.div>
             </section>
+
         </div>
     );
 };

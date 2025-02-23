@@ -19,6 +19,9 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+import Projects from '../pages/Projects'
+import Waves from "../components/ui/Waves";
+
 const AboutTeam = () => {
     const { userId } = useParams();
     const member = teamMembers.find((member) => member.id === userId);
@@ -32,12 +35,29 @@ const AboutTeam = () => {
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <img
+
+                    <div className="absolute inset-0 z-10 pointer-events-none">
+                        <Waves
+                            lineColor="#ffffff40"
+                            backgroundColor="rgba(0, 0, 0, 0.95)"
+                            waveSpeedX={0.03}
+                            waveSpeedY={0.02}
+                            waveAmpX={35}
+                            waveAmpY={25}
+                            friction={0.95}
+                            tension={0.025}
+                            maxCursorMove={80}
+                            xGap={24}
+                            yGap={40}
+                        />
+                    </div>
+
+                    {/* <img
                         src={member.image}
                         alt={member.name}
                         className="w-full h-full object-cover object-top opacity-40"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/40"></div>
+                    /> */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-black/60"></div>
                 </div>
 
                 <motion.div
@@ -83,28 +103,33 @@ const AboutTeam = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="container mx-auto grid lg:grid-cols-2 gap-12 items-center"
+                            className="container mx-auto grid lg:grid-cols-1 gap-12 items-center"
                         >
-                            <div>
-                                <h2 className="text-4xl font-bold text-white mb-6">About Me</h2>
-                                <p className="text-gray-300 text-lg mb-6">{member.bio}</p>
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-gray-400">
-                                        <Globe className="w-5 h-5" />
-                                        <span>{member.location}</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-gray-400">
-                                        <Mail className="w-5 h-5" />
-                                        <span>{member.email}</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-gray-400">
-                                        <Calendar className="w-5 h-5" />
-                                        <span>{member.availability}</span>
+                            <div className="lg:px-10 flex md:flex-row flex-col md:items-start items-center justify-between w-full">
+                                <div className="mx-auto mb-10">
+                                    <h2 className="text-4xl font-bold text-white mb-6">About Me</h2>
+                                    <p className="text-gray-300 text-lg mb-6">{member.bio}</p>
+                                    <div className="space-y-4">
+                                        <div className="flex items-center gap-3 text-gray-400">
+                                            <Globe className="w-5 h-5" />
+                                            <span>{member.location}</span>
+                                        </div>
+                                        <div className="flex items-center gap-3 text-gray-400">
+                                            <Mail className="w-5 h-5" />
+                                            <span>{member.email}</span>
+                                        </div>
+                                        <div className="flex items-center gap-3 text-gray-400">
+                                            <Calendar className="w-5 h-5" />
+                                            <span>{member.availability}</span>
+                                        </div>
                                     </div>
                                 </div>
+
+
+                                <img src={member.image} alt={member.name} className="md:w-1/2 lg:scale-90 h-auto rounded-3xl" />
                             </div>
 
-                            <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+                            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
                                 {Object.entries(member.skills).map(([category, skills]) => (
                                     <div key={category} className="bg-gray-900/50 rounded-xl p-6">
                                         <h3 className="text-white font-semibold mb-4 capitalize">{category}</h3>
@@ -126,64 +151,8 @@ const AboutTeam = () => {
                 </section>
 
                 {/* Projects Section */}
-                <section className="py-24 px-6 bg-gray-900/30">
-                    <div className="max-w-7xl mx-auto">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <h2 className="text-4xl font-bold text-white mb-12 text-center">Featured Projects</h2>
-                            <div className="grid md:grid-cols-3 gap-8">
-                                {member.projects.map((project, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        className="group"
-                                    >
-                                        <div className="bg-gray-800/50 border-gray-700/50 overflow-hidden">
-                                            <div className="relative h-48 overflow-hidden">
-                                                <img
-                                                    src={project.image}
-                                                    alt={project.title}
-                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                                />
-                                            </div>
-                                            <div className="p-6">
-                                                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                                                <p className="text-gray-400 mb-4">{project.description}</p>
-                                                <div className="flex flex-wrap gap-2 mb-4">
-                                                    {project.tech.map((tech) => (
-                                                        <div
-                                                            key={tech}
-                                                            className="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-sm"
-                                                        >
-                                                            {tech}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                <button
-                                                    className="w-full border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white rounded-lg py-2 px-4 transition-all duration-300 flex items-center justify-center gap-2"
-                                                >
-                                                    <a
-                                                        href={project.link}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="flex items-center gap-2"
-                                                    >
-                                                        View Project <ExternalLink className="w-4 h-4" />
-                                                    </a>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    </div>
-                </section>
+                <Projects />
+
 
                 {/* Experience Section */}
                 <section className="py-24 px-6">
@@ -204,11 +173,11 @@ const AboutTeam = () => {
                                         className="bg-gray-900/50 rounded-xl p-8 border border-gray-800/50"
                                     >
                                         <div className="flex justify-between items-start mb-4">
-                                            <div>
+                                            <div className="w-2/3">
                                                 <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
                                                 <p className="text-blue-400">{exp.company}</p>
                                             </div>
-                                            <span className="text-gray-400">{exp.period}</span>
+                                            <span className="w-1/2 text-end -mr-4 text-xs text-gray-400">{exp.period}</span>
                                         </div>
                                         <ul className="space-y-2">
                                             {exp.highlights.map((highlight, idx) => (
@@ -266,6 +235,7 @@ const AboutTeam = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
+                            className="flex flex-col items-center justify-center"
                         >
                             <h2 className="text-4xl font-bold text-white mb-8">Speaking Engagements</h2>
                             <div className="space-y-6">

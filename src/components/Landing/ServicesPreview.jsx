@@ -19,6 +19,7 @@ import {
 import SpotlightCard from "../ui/SpotlightCard";
 import Waves from "../ui/Waves";
 import RotatingText from "../ui/RotatingText"
+import { useNavigate } from "react-router-dom";
 
 const services = [
     {
@@ -51,6 +52,8 @@ const techStack = [
     { name: "Node.js", icon: <Box className="w-12 h-12 text-green-400" /> },
     { name: "GraphQL", icon: <Globe2 className="w-12 h-12 text-pink-400" /> },
 ];
+
+
 
 const LogoWall = () => {
     return (
@@ -104,7 +107,26 @@ const LogoWall = () => {
     );
 };
 
+
+
+
+
+
+
 const ServicesAndTechStack = () => {
+
+    const navigate = useNavigate();
+
+    const navigateToServices = (member) => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+        setTimeout(() => {
+            navigate(`/services`);
+        }, 0);
+    };
+
     return (
         <>
             <section className="relative bg-black py-24 px-4 overflow-hidden">
@@ -115,7 +137,7 @@ const ServicesAndTechStack = () => {
                         transition={{ duration: 0.6 }}
                         className="md:text-5xl text-3xl font-bold text-white text-center mb-16"
                     >
-                        <div className="flex items-center justify-evenly w-full ">
+                        <div className="flex items-center justify-center w-full ">
                             Our Premium
                             <span className="ml-4 text-blue-400">
                                 <RotatingText
@@ -159,7 +181,7 @@ const ServicesAndTechStack = () => {
                                         {service.description}
                                     </p>
                                     <motion.div
-                                        // onClick={ }
+                                        onClick={navigateToServices}
                                         className="flex items-center text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
                                         whileHover={{ x: 5 }}
                                     >
@@ -171,6 +193,8 @@ const ServicesAndTechStack = () => {
                     </div>
                 </div>
             </section>
+
+
 
             <section className="relative bg-black py-24 ">
                 <div className="mx-auto cursor-default">
