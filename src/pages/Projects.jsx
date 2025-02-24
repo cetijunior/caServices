@@ -30,7 +30,7 @@ const Projects = () => {
     const navigate = useNavigate();
 
     const handleNavigate = (project) => {
-        navigate(`/projects/${encodeURIComponent(project.title)}`, { state: project });
+        navigate(`/projects/${encodeURIComponent(project.id)}`, { state: project });
         // Delay scrolling slightly to ensure smooth transition
         setTimeout(() => {
             window.scrollTo({
